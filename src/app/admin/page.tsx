@@ -197,7 +197,7 @@ export default function AdminPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter PIN (e.g. 2026 or akramsir2026)"
+                placeholder="Enter your admin PIN or password"
                 className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500"
               />
             </div>

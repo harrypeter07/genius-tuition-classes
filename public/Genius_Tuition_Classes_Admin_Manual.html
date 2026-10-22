@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Genius Tuition Classes — Administrator & Architecture Manual</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.55;
+      font-size: 13px;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .brand-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+    .brand-subtitle {
+      font-size: 12px;
+      color: #2563eb;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+    .doc-meta {
+      text-align: right;
+      font-size: 11px;
+      color: #64748b;
+    }
+    h2 {
+      color: #0f172a;
+      font-size: 17px;
+      font-weight: 700;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      page-break-after: avoid;
+    }
+    h3 {
+      color: #1e293b;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      page-break-after: avoid;
+    }
+    p {
+      margin: 0 0 10px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px 0;
+      font-size: 12px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .callout {
+      background-color: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12px;
+    }
+    .callout-title {
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 4px;
+    }
+    .code-box {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 11px;
+      margin: 10px 0;
+      word-break: break-all;
+    }
+    ul, ol {
+      margin: 0 0 12px 0;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+    .footer {
+      margin-top: 30px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+      font-size: 10px;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h1 class="brand-title">Genius Tuition Classes</h1>
+      <div class="brand-subtitle">Administrator &amp; Cloud Database System Manual</div>
+    </div>
+    <div class="doc-meta">
+      <strong>Center:</strong> Koradi, Nagpur, MH<br>
+      <strong>Mentor:</strong> AKRAM SIR (+91 91756 91457)<br>
+      <strong>Document Version:</strong> 1.0 (PDF Edition)
+    </div>
+  </div>
+
+  <h2>1. Cloud Database Architecture &amp; Hosting Location</h2>
+  <p>
+    The PostgreSQL database for <strong>Genius Tuition Classes</strong> is <strong>100% cloud-hosted</strong> in an enterprise-grade cloud environment (not running locally on your laptop or machine).
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Infrastructure Parameter</th>
+        <th>Hosting Specification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Cloud Database Provider</strong></td>
+        <td><strong>Supabase Enterprise Cloud</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Underlying Infrastructure</strong></td>
+        <td><strong>Amazon Web Services (AWS)</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Cloud Datacenter Region</strong></td>
+        <td><strong>ap-southeast-2 (Asia Pacific / Sydney)</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Connection Pool Host</strong></td>
+        <td><code>aws-1-ap-southeast-2.pooler.supabase.com:5432</code></td>
+      </tr>
+      <tr>
+        <td><strong>Database Protocol</strong></td>
+        <td>PostgreSQL 15+ (SSL Encrypted Connection)</td>
+      </tr>
+      <tr>
+        <td><strong>Availability &amp; Uptime</strong></td>
+        <td>24/7 Cloud Hosting (Operates independently when laptop is turned off)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">Database Storage &amp; Persistence</div>
+    All admissions inquiries submitted by students or parents from Koradi/Nagpur are saved permanently into the cloud database tables and reflected live in the Admin Management Portal.
+  </div>
+
+  <h3>Active Database Tables</h3>
+  <ul>
+    <li><code>genius_inquiries</code> — Records student names, parent phone numbers, grade (5th–12th), subjects, preferred batch, notes, status, and timestamps.</li>
+    <li><code>genius_settings</code> — Dynamic institute configuration: Akram Sir's name, contact numbers, Koradi address, visiting hours, and announcement alerts.</li>
+    <li><code>genius_classes</code> — Batch offerings, curriculum (SSC &amp; CBSE), batch caps (15–18 students), and timings.</li>
+    <li><code>genius_teachers</code> — Educator credentials, qualifications, experience, and Akram Sir's profile.</li>
+    <li><code>genius_testimonials</code> — Student board exam marks (e.g. 96.4%, 98/100 in Maths) and parent reviews.</li>
+    <li><code>genius_faqs</code> — Frequently asked questions regarding offline tuition in Koradi.</li>
+  </ul>
+
+  <h2>2. Access URLs &amp; Administrator Credentials</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Portal / Service</th>
+        <th>Direct URL</th>
+        <th>Credentials / Access</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Live Website</strong></td>
+        <td><a href="https://genius-tuition-classes.vercel.app">https://genius-tuition-classes.vercel.app</a></td>
+        <td><span class="badge badge-green">Public</span></td>
+      </tr>
+      <tr>
+        <td><strong>Admin Portal</strong></td>
+        <td><a href="https://genius-tuition-classes.vercel.app/admin">https://genius-tuition-classes.vercel.app/admin</a></td>
+        <td><strong>PIN:</strong> <code>2026</code><br><strong>Password:</strong> <code>akramsir2026</code></td>
+      </tr>
+      <tr>
+        <td><strong>GitHub Repository</strong></td>
+        <td><a href="https://github.com/harrypeter07/genius-tuition-classes">github.com/harrypeter07/genius-tuition-classes</a></td>
+        <td>Account: <code>harrypeter07</code></td>
+      </tr>
+      <tr>
+        <td><strong>Vercel Console</strong></td>
+        <td><a href="https://vercel.com/harrypeter07s-projects/genius-tuition-classes">vercel.com/harrypeter07s-projects/genius-tuition-classes</a></td>
+        <td>Production Project Dashboard</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <h2>3. Step-by-Step Administrator Tutorial</h2>
+
+  <h3>Step 1: Logging into the Admin Management Panel</h3>
+  <ol>
+    <li>Navigate to <strong><code>https://genius-tuition-classes.vercel.app/admin</code></strong> on any phone, tablet, or desktop browser.</li>
+    <li>Enter the 4-digit PIN: <strong><code>2026</code></strong> (or full password <strong><code>akramsir2026</code></strong>).</li>
+    <li>Click <strong>"Unlock Admin Panel"</strong>. The dashboard will load your live cloud data automatically.</li>
+  </ol>
+
+  <h3>Step 2: Managing Admission Inquiries (Leads Inbox)</h3>
+  <p>
+    The <strong>Admission Inquiries</strong> tab tracks every lead submitted through the public website:
+  </p>
+  <ul>
+    <li><strong>Reviewing Leads:</strong> See the student's name, grade, subjects of interest, batch timing preference, notes, and exact date/time submitted.</li>
+    <li><strong>1-Click Call Parent:</strong> Tap the <strong>"Call"</strong> button to immediately dial the parent's phone number.</li>
+    <li><strong>1-Click WhatsApp Parent:</strong> Tap the <strong>"WhatsApp"</strong> button. The portal will automatically open a pre-drafted chat with the parent from Akram Sir:
+      <div class="code-box">"Hello! This is Akram Sir from Genius Tuition Classes, Koradi. Thank you for your inquiry for [Student Name] ([Grade]). When can we schedule your 2-day demo class?"</div>
+    </li>
+    <li><strong>Lead Status Tracking:</strong> Update the dropdown between <code>New</code>, <code>Contacted</code>, <code>Admitted</code>, or <code>Archived</code> to stay organized during peak admission season.</li>
+  </ul>
+
+  <h3>Step 3: Editing Institute Details &amp; Contact Numbers</h3>
+  <p>
+    Under the <strong>Institute &amp; Contact Info</strong> tab, Akram Sir or the administrator can modify:
+  </p>
+  <ul>
+    <li><strong>Institute Name &amp; Contact Person:</strong> Change display name or director designation.</li>
+    <li><strong>Display Phone &amp; Raw WhatsApp Number:</strong> Updates all clickable call and WhatsApp links across the entire website instantly.</li>
+    <li><strong>Koradi Center Address:</strong> Update landmark directions or street numbers.</li>
+    <li><strong>Visiting Hours:</strong> Adjust morning (e.g. <em>8:00 AM – 12:30 PM</em>) and evening (e.g. <em>4:00 PM – 8:30 PM</em>) hours.</li>
+    <li><strong>Announcement Banner:</strong> Update promotional alerts (e.g. <em>"New Batch for Class 10th Starting Monday!"</em>).</li>
+    <li>Click <strong>"Save Changes to Database"</strong>. Changes persist permanently in PostgreSQL.</li>
+  </ul>
+
+  <h3>Step 4: Batches, Teachers &amp; Testimonials</h3>
+  <ul>
+    <li><strong>Batches Tab:</strong> Review active curriculums (State Board SSC / CBSE), timings, and enforce the <strong>15–18 student per batch cap</strong>.</li>
+    <li><strong>Faculty Tab:</strong> Manage Akram Sir's bio, educator qualifications, and subject specializations.</li>
+    <li><strong>Results Tab:</strong> Review and showcase top board marks (e.g., 96.4%, 94.8%, 98 in Maths) to build parent trust in Koradi.</li>
+  </ul>
+
+  <h2>4. Summary of Website Features &amp; Marketing Focus</h2>
+  <ul>
+    <li><strong>Marketing Only / Offline Coaching:</strong> The website clearly communicates that all teaching is 100% in-person at the Koradi center, eliminating student screen fatigue and online distractions.</li>
+    <li><strong>Photorealistic Education Imagery:</strong> Real study desk book stack (Maths, Science, English, Social Studies), Akram Sir teaching at the whiteboard, and modern offline classroom setups.</li>
+    <li><strong>Dual Lead Generation:</strong> Direct website form submission + direct 1-click WhatsApp messaging.</li>
+  </ul>
+
+  <div class="footer">
+    <span>Genius Tuition Classes • Koradi, Nagpur, Maharashtra • Guidance by AKRAM SIR (+91 91756 91457)</span>
+    <span>Page 2 of 2</span>
+  </div>
+
+</body>
+</html>

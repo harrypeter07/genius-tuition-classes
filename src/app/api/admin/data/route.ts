@@ -10,6 +10,7 @@ import {
   initDb,
 } from "@/lib/db";
 
+
 export async function GET() {
   try {
     const [settings, classes, teachers, testimonials, faqs, inquiries] = await Promise.all([
@@ -89,8 +90,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, message: "Inquiry status updated" });
     }
 
+    if (action === "delete_inquiry") {
+      const { id } = payload;
+      await p.query("DELETE FROM genius_inquiries WHERE id = $1", [id]);
+      return NextResponse.json({ success: true, message: "Inquiry deleted" });
+    }
+
     if (action === "save_class") {
       const c = payload;
+      const classId = c.id || `class-${Date.now()}`;
       await p.query(
         `INSERT INTO genius_classes (id, grade, category, title, badge, description, subjects, features, batch_timing, batch_size, curriculum, is_active, updated_at)
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, true, $12)
@@ -107,16 +115,16 @@ export async function POST(request: Request) {
            curriculum = excluded.curriculum,
            updated_at = excluded.updated_at`,
         [
-          c.id,
+          classId,
           c.grade,
-          c.category,
+          c.category || "foundation",
           c.title,
-          c.badge,
+          c.badge || "Popular",
           c.description,
-          JSON.stringify(c.subjects),
-          JSON.stringify(c.features),
-          c.batchTiming,
-          c.batchSize,
+          JSON.stringify(Array.isArray(c.subjects) ? c.subjects : String(c.subjects).split(",").map(s => s.trim())),
+          JSON.stringify(Array.isArray(c.features) ? c.features : String(c.features).split("\n").map(f => f.trim()).filter(Boolean)),
+          c.batchTiming || c.batch_timing,
+          c.batchSize || c.batch_size,
           c.curriculum,
           now,
         ]
@@ -124,8 +132,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, message: "Class batch saved" });
     }
 
+    if (action === "delete_class") {
+      const { id } = payload;
+      await p.query("DELETE FROM genius_classes WHERE id = $1", [id]);
+      return NextResponse.json({ success: true, message: "Class batch deleted" });
+    }
+
     if (action === "save_teacher") {
       const t = payload;
+      const teacherId = t.id || `teacher-${Date.now()}`;
       await p.query(
         `INSERT INTO genius_teachers (id, name, role, qualification, experience, subjects, bio, highlight, image_url, updated_at)
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
@@ -140,23 +155,30 @@ export async function POST(request: Request) {
            image_url = excluded.image_url,
            updated_at = excluded.updated_at`,
         [
-          t.id,
+          teacherId,
           t.name,
           t.role,
           t.qualification,
           t.experience,
-          JSON.stringify(t.subjects),
+          JSON.stringify(Array.isArray(t.subjects) ? t.subjects : String(t.subjects).split(",").map(s => s.trim())),
           t.bio,
           t.highlight,
-          t.imageUrl || null,
+          t.imageUrl || t.image_url || null,
           now,
         ]
       );
       return NextResponse.json({ success: true, message: "Teacher saved" });
     }
 
+    if (action === "delete_teacher") {
+      const { id } = payload;
+      await p.query("DELETE FROM genius_teachers WHERE id = $1", [id]);
+      return NextResponse.json({ success: true, message: "Teacher deleted" });
+    }
+
     if (action === "save_testimonial") {
       const t = payload;
+      const testId = t.id || `res-${Date.now()}`;
       await p.query(
         `INSERT INTO genius_testimonials (id, name, grade, school, score, quote, parent_name, year, is_featured, updated_at)
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, true, $9)
@@ -170,18 +192,24 @@ export async function POST(request: Request) {
            year = excluded.year,
            updated_at = excluded.updated_at`,
         [
-          t.id,
+          testId,
           t.name,
           t.grade,
           t.school,
           t.score,
           t.quote,
-          t.parentName || null,
+          t.parentName || t.parent_name || null,
           t.year,
           now,
         ]
       );
       return NextResponse.json({ success: true, message: "Testimonial saved" });
+    }
+
+    if (action === "delete_testimonial") {
+      const { id } = payload;
+      await p.query("DELETE FROM genius_testimonials WHERE id = $1", [id]);
+      return NextResponse.json({ success: true, message: "Testimonial deleted" });
     }
 
     return NextResponse.json({ success: false, error: "Invalid action" }, { status: 400 });

@@ -10,8 +10,24 @@ import { InquirySection } from "@/components/sections/InquirySection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { Footer } from "@/components/Footer";
 import { FloatingActions } from "@/components/FloatingActions";
+import {
+  getDbSettings,
+  getDbClasses,
+  getDbTeachers,
+  getDbTestimonials,
+  getDbFaqs,
+} from "@/lib/db";
 
-export default function Home() {
+
+export default async function Home() {
+  const [settings, classes, teachers, testimonials, faqs] = await Promise.all([
+    getDbSettings(),
+    getDbClasses(),
+    getDbTeachers(),
+    getDbTestimonials(),
+    getDbFaqs(),
+  ]);
+
   return (
     <div className="flex min-h-screen flex-col bg-[#070c18] text-slate-100 selection:bg-blue-600 selection:text-white">
       {/* Sticky Header Navigation */}
@@ -19,22 +35,22 @@ export default function Home() {
 
       {/* Main Page Content */}
       <main className="flex-1">
-        {/* Hero Section matching the UI Mockup */}
+        {/* Hero Section */}
         <HeroSection />
 
         {/* 4 Feature Highlights band */}
         <FeatureHighlights />
 
-        {/* Offline Classroom Experience & Story */}
+        {/* Offline Classroom Experience */}
         <AboutSection />
 
-        {/* Classes & Batches Offered */}
+        {/* Classes & Batches Offered - Live from DB */}
         <ClassesSection />
 
-        {/* Faculty & Mentors led by Akram Sir */}
-        <TeachersSection />
+        {/* Faculty & Mentors led by Akram Sir - Live from DB */}
+        <TeachersSection teachers={teachers} settings={settings} />
 
-        {/* Proven Results & Student Testimonials */}
+        {/* Proven Results & Student Testimonials - Live from DB */}
         <ResultsSection />
 
         {/* Admission Inquiry & Free Demo Class Form */}
@@ -44,7 +60,7 @@ export default function Home() {
         <FaqSection />
       </main>
 
-      {/* Footer matching mockup branding & contact */}
+      {/* Footer */}
       <Footer />
 
       {/* Floating Call & WhatsApp Buttons */}

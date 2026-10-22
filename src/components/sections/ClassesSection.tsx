@@ -8,8 +8,16 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Clock, Users, Check, MessageCircle, Sparkles } from "lucide-react";
 
-export function ClassesSection() {
+interface ClassesSectionProps {
+  classes?: any[];
+  settings?: Record<string, string>;
+}
+
+export function ClassesSection({ classes, settings }: ClassesSectionProps = {}) {
   const [activeTab, setActiveTab] = useState<string>("all");
+
+  const allBatches = classes && classes.length > 0 ? classes : CLASSES_DATA;
+  const phoneRaw = settings?.phoneRaw || INSTITUTE_DETAILS.phoneRaw;
 
   const filterTabs = [
     { id: "all", label: "All Batches" },
@@ -20,14 +28,14 @@ export function ClassesSection() {
 
   const filteredBatches =
     activeTab === "all"
-      ? CLASSES_DATA
-      : CLASSES_DATA.filter((item) => item.category === activeTab);
+      ? allBatches
+      : allBatches.filter((item) => item.category === activeTab);
 
   const getInquiryUrl = (batchName: string) => {
     const text = encodeURIComponent(
       `Hello Akram Sir, I am interested in admission for *${batchName}* at Genius Tuition Classes, Koradi. Please share details on fees, timings, and upcoming batch seats.`
     );
-    return `https://wa.me/${INSTITUTE_DETAILS.phoneRaw}?text=${text}`;
+    return `https://wa.me/${phoneRaw}?text=${text}`;
   };
 
   return (
@@ -97,7 +105,7 @@ export function ClassesSection() {
                       Subjects Covered:
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {item.subjects.map((sub) => (
+                      {(Array.isArray(item.subjects) ? item.subjects : []).map((sub: string) => (
                         <span
                           key={sub}
                           className="px-3 py-1 rounded-lg text-xs font-medium bg-slate-800/90 text-slate-200 border border-slate-700/60"
@@ -114,7 +122,7 @@ export function ClassesSection() {
                       Program Highlights:
                     </div>
                     <ul className="space-y-2 text-sm text-slate-300">
-                      {item.features.map((feat, idx) => (
+                      {(Array.isArray(item.features) ? item.features : []).map((feat: string, idx: number) => (
                         <li key={idx} className="flex items-start gap-2.5">
                           <Check className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
                           <span>{feat}</span>

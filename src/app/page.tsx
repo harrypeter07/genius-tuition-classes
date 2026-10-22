@@ -45,13 +45,13 @@ export default async function Home() {
         <AboutSection />
 
         {/* Classes & Batches Offered - Live from DB */}
-        <ClassesSection />
+        <ClassesSection classes={classes} settings={settings} />
 
         {/* Faculty & Mentors led by Akram Sir - Live from DB */}
         <TeachersSection teachers={teachers} settings={settings} />
 
         {/* Proven Results & Student Testimonials - Live from DB */}
-        <ResultsSection />
+        <ResultsSection testimonials={testimonials} settings={settings} />
 
         {/* Admission Inquiry & Free Demo Class Form */}
         <InquirySection />

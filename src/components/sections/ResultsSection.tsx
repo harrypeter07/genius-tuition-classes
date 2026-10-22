@@ -6,7 +6,14 @@ import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Star, Trophy, Quote, CheckCircle, TrendingUp } from "lucide-react";
 
-export function ResultsSection() {
+interface ResultsSectionProps {
+  testimonials?: any[];
+  settings?: Record<string, string>;
+}
+
+export function ResultsSection({ testimonials }: ResultsSectionProps = {}) {
+  const items = testimonials && testimonials.length > 0 ? testimonials : RESULTS_DATA;
+
   return (
     <section id="results" className="py-20 md:py-28 relative bg-[#070c18]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,7 +50,7 @@ export function ResultsSection() {
 
         {/* Student Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {RESULTS_DATA.map((item) => (
+          {items.map((item) => (
             <Card
               key={item.id}
               className="border border-slate-800 bg-gradient-to-br from-slate-900/70 to-slate-950/90 hover:border-slate-700 transition-all duration-300 flex flex-col justify-between"

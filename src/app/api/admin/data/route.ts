@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import {
   getDbSettings,
   getDbClasses,
@@ -10,8 +11,9 @@ import {
   initDb,
 } from "@/lib/db";
 
-
-export async function GET() {
+export async function GET(request: Request) {
+  // Accessing request properties or headers ensures dynamic runtime
+  const { searchParams } = new URL(request.url);
   try {
     const [settings, classes, teachers, testimonials, faqs, inquiries] = await Promise.all([
       getDbSettings(),
@@ -22,17 +24,28 @@ export async function GET() {
       getDbInquiries(),
     ]);
 
-    return NextResponse.json({
-      success: true,
-      data: {
-        settings,
-        classes,
-        teachers,
-        testimonials,
-        faqs,
-        inquiries,
+    return NextResponse.json(
+      {
+        success: true,
+        data: {
+          settings,
+          classes,
+          teachers,
+          testimonials,
+          faqs,
+          inquiries,
+        },
       },
-    });
+      {
+        headers: {
+          "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+          "CDN-Cache-Control": "no-store",
+          "Vercel-CDN-Cache-Control": "no-store",
+          "Pragma": "no-cache",
+          "Expires": "0",
+        },
+      }
+    );
   } catch (error: any) {
     return NextResponse.json(
       { success: false, error: error.message },
@@ -57,6 +70,15 @@ export async function POST(request: Request) {
 
     const now = Date.now();
 
+    const triggerRevalidate = () => {
+      try {
+        revalidatePath("/");
+        revalidatePath("/admin");
+      } catch (e) {
+        // revalidation error ignored
+      }
+    };
+
     if (action === "update_setting") {
       const { key, value } = payload;
       await p.query(
@@ -65,6 +87,7 @@ export async function POST(request: Request) {
          ON CONFLICT (key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at`,
         [key, String(value || "").trim(), now]
       );
+      triggerRevalidate();
       return NextResponse.json({ success: true, message: `Setting ${key} updated` });
     }
 
@@ -78,6 +101,7 @@ export async function POST(request: Request) {
           [k, String(v || "").trim(), now]
         );
       }
+      triggerRevalidate();
       return NextResponse.json({ success: true, message: "Settings updated successfully" });
     }
 
@@ -87,12 +111,14 @@ export async function POST(request: Request) {
         "UPDATE genius_inquiries SET status = $1 WHERE id = $2",
         [status, id]
       );
+      triggerRevalidate();
       return NextResponse.json({ success: true, message: "Inquiry status updated" });
     }
 
     if (action === "delete_inquiry") {
       const { id } = payload;
       await p.query("DELETE FROM genius_inquiries WHERE id = $1", [id]);
+      triggerRevalidate();
       return NextResponse.json({ success: true, message: "Inquiry deleted" });
     }
 
@@ -129,12 +155,14 @@ export async function POST(request: Request) {
           now,
         ]
       );
-      return NextResponse.json({ success: true, message: "Class batch saved" });
+      triggerRevalidate();
+      return NextResponse.json({ success: true, message: "Class batch saved", id: classId });
     }
 
     if (action === "delete_class") {
       const { id } = payload;
       await p.query("DELETE FROM genius_classes WHERE id = $1", [id]);
+      triggerRevalidate();
       return NextResponse.json({ success: true, message: "Class batch deleted" });
     }
 
@@ -167,12 +195,14 @@ export async function POST(request: Request) {
           now,
         ]
       );
-      return NextResponse.json({ success: true, message: "Teacher saved" });
+      triggerRevalidate();
+      return NextResponse.json({ success: true, message: "Teacher saved", id: teacherId });
     }
 
     if (action === "delete_teacher") {
       const { id } = payload;
       await p.query("DELETE FROM genius_teachers WHERE id = $1", [id]);
+      triggerRevalidate();
       return NextResponse.json({ success: true, message: "Teacher deleted" });
     }
 
@@ -203,12 +233,14 @@ export async function POST(request: Request) {
           now,
         ]
       );
-      return NextResponse.json({ success: true, message: "Testimonial saved" });
+      triggerRevalidate();
+      return NextResponse.json({ success: true, message: "Testimonial saved", id: testId });
     }
 
     if (action === "delete_testimonial") {
       const { id } = payload;
       await p.query("DELETE FROM genius_testimonials WHERE id = $1", [id]);
+      triggerRevalidate();
       return NextResponse.json({ success: true, message: "Testimonial deleted" });
     }
 

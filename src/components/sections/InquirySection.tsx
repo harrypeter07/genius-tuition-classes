@@ -9,10 +9,9 @@ import {
   MessageCircle,
   Phone,
   CheckCircle2,
-  Calendar,
-  Sparkles,
-  MapPin,
   Clock,
+  MapPin,
+  AlertCircle,
 } from "lucide-react";
 
 export function InquirySection() {
@@ -27,6 +26,7 @@ export function InquirySection() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -34,8 +34,17 @@ export function InquirySection() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleWhatsAppSubmit = (e: React.FormEvent) => {
+  const handleWhatsAppSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Also save in DB asynchronously
+    try {
+      fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+    } catch (err) {}
+
     const msg = `*Genius Tuition Classes - Admission Inquiry*
 ---------------------------------------
 • Student Name: ${formData.studentName || "Prospective Student"}
@@ -51,13 +60,29 @@ Please share details on available seats, batch timings, and demo classes.`;
     window.open(`https://wa.me/${INSTITUTE_DETAILS.phoneRaw}?text=${encoded}`, "_blank");
   };
 
-  const handleDirectSubmit = (e: React.FormEvent) => {
+  const handleDirectSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setSubmitError("");
+
+    try {
+      const res = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const json = await res.json();
+      if (json.success) {
+        setIsSubmitted(true);
+      } else {
+        setSubmitError(json.error || "Failed to submit. Please call or WhatsApp directly.");
+      }
+    } catch (err: any) {
+      setSubmitError("Network error. Please WhatsApp us directly.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 900);
+    }
   };
 
   return (
@@ -181,10 +206,10 @@ Please share details on available seats, batch timings, and demo classes.`;
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
                   <h3 className="text-2xl font-bold text-white">
-                    Inquiry Received!
+                    Inquiry Received & Saved!
                   </h3>
                   <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong>{formData.studentName}</strong>. Akram Sir will review your details and contact you shortly at <strong>{formData.parentPhone}</strong>.
+                    Thank you, <strong>{formData.studentName}</strong>. Your inquiry has been sent to Akram Sir and logged into our management system. We will contact you at <strong>{formData.parentPhone}</strong>.
                   </p>
                   <div className="pt-4 flex justify-center gap-4">
                     <a
@@ -216,6 +241,13 @@ Please share details on available seats, batch timings, and demo classes.`;
                       Offline Batches • Koradi
                     </span>
                   </div>
+
+                  {submitError && (
+                    <div className="p-3 rounded-xl bg-red-950/60 border border-red-800/50 text-red-300 text-xs flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{submitError}</span>
+                    </div>
+                  )}
 
                   {/* Student Name */}
                   <div>
@@ -330,7 +362,7 @@ Please share details on available seats, batch timings, and demo classes.`;
                     />
                   </div>
 
-                  {/* Action Buttons: 2 buttons (Submit or Send Directly via WhatsApp) */}
+                  {/* Action Buttons: 2 buttons */}
                   <div className="pt-2 flex flex-col sm:flex-row gap-3">
                     <Button
                       type="submit"
@@ -356,7 +388,7 @@ Please share details on available seats, batch timings, and demo classes.`;
                   </div>
 
                   <p className="text-[11px] text-slate-500 text-center pt-1">
-                    🔒 Your details are kept private and sent directly to Akram Sir. No spam.
+                    🔒 Logged securely into Akram Sir&apos;s admission system.
                   </p>
                 </form>
               )}

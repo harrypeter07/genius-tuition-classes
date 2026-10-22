@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { TEACHERS_DATA, INSTITUTE_DETAILS } from "@/data/tuitionData";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import { UserCheck, Award, BookOpen, Star, Sparkles, MessageCircle, Phone } from "lucide-react";
+import { BookOpen, Star, Sparkles, MessageCircle, Phone, Award } from "lucide-react";
 
 export function TeachersSection() {
   const leadTeacher = TEACHERS_DATA[0]; // Akram Sir
@@ -35,27 +35,31 @@ export function TeachersSection() {
         <div className="mb-14">
           <div className="relative rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-blue-950/70 via-slate-900/90 to-slate-950 border-2 border-blue-500/40 shadow-2xl shadow-blue-950/60 overflow-hidden">
             {/* Top decorative badge */}
-            <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-6 py-1.5 rounded-bl-2xl uppercase tracking-widest shadow-md">
+            <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-6 py-1.5 rounded-bl-2xl uppercase tracking-widest shadow-md z-10">
               Founder & Head Mentor
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
-              {/* Avatar / Portrait placeholder */}
-              <div className="lg:col-span-4 flex flex-col items-center text-center">
-                <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-sky-400 p-1 shadow-xl shadow-blue-600/30">
-                  <div className="w-full h-full rounded-[22px] bg-slate-950 flex flex-col items-center justify-center text-white">
-                    <UserCheck className="w-16 h-16 text-blue-400 stroke-1" />
-                    <span className="text-xs font-bold text-slate-300 mt-2">
-                      AKRAM SIR
+              {/* Photo Portrait of Akram Sir Teaching */}
+              <div className="lg:col-span-5 flex flex-col items-center">
+                <div className="relative w-full max-w-[320px] aspect-4/5 rounded-2xl overflow-hidden border-2 border-blue-500/30 shadow-2xl shadow-blue-950/80">
+                  <Image
+                    src="/images/akram-sir-teaching.jpg"
+                    alt="Akram Sir teaching Mathematics and Science in classroom at Genius Tuition Classes Koradi"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  
+                  <div className="absolute bottom-3 left-3 right-3 text-center">
+                    <span className="inline-block bg-blue-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-lg border border-white/20">
+                      10+ Years Teaching in Koradi, Nagpur
                     </span>
-                  </div>
-                  <div className="absolute -bottom-3 bg-blue-600 text-white text-[11px] font-bold px-3 py-0.5 rounded-full shadow-lg border border-white/20">
-                    10+ Yrs Exp
                   </div>
                 </div>
 
-                <div className="mt-5 space-y-1">
+                <div className="mt-4 text-center space-y-0.5">
                   <h3 className="text-2xl font-black text-white">{leadTeacher.name}</h3>
                   <div className="text-xs font-semibold text-blue-400 tracking-wide uppercase">
                     {leadTeacher.role}
@@ -67,7 +71,7 @@ export function TeachersSection() {
               </div>
 
               {/* Bio & Details */}
-              <div className="lg:col-span-8 space-y-5">
+              <div className="lg:col-span-7 space-y-5">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/40 border border-blue-500/30 text-xs font-semibold text-blue-300">
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>Mathematics & Science Specialist</span>

@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { GraduationCap, MapPin, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { GraduationCap, MapPin, MessageCircle, Shield } from "lucide-react";
 import { INSTITUTE_DETAILS } from "@/data/tuitionData";
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -59,7 +60,7 @@ export function Footer() {
               Premier offline coaching for school and board students under the experienced guidance of Akram Sir. Nurturing conceptual understanding, continuous practice, and high academic scoring.
             </p>
 
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <span className="text-xs text-slate-500 font-medium">Mentor:</span>
               <span className="text-xs font-semibold text-slate-200 bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full">
                 Akram Sir (+91 91756 91457)
@@ -102,6 +103,15 @@ export function Footer() {
                 <a href="#contact" className="hover:text-blue-400 transition-colors">
                   Admissions & Demo Class
                 </a>
+              </li>
+              <li className="pt-2">
+                <Link
+                  href="/admin"
+                  className="inline-flex items-center gap-1.5 text-blue-400 hover:text-blue-300 font-medium"
+                >
+                  <Shield className="w-3.5 h-3.5" />
+                  <span>Admin / Management Portal</span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -153,7 +163,7 @@ export function Footer() {
               </a>
             </div>
 
-            {/* Social Icons */}
+            {/* Social Icons & Admin Lock */}
             <div className="flex items-center gap-3">
               <a
                 href="#"
@@ -176,6 +186,14 @@ export function Footer() {
               >
                 <YoutubeIcon className="w-4 h-4" />
               </a>
+              <Link
+                href="/admin"
+                className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-blue-400 hover:border-blue-500/40 transition-colors"
+                title="Admin Management Portal"
+                aria-label="Admin Portal"
+              >
+                <Shield className="w-4 h-4" />
+              </Link>
             </div>
 
           </div>

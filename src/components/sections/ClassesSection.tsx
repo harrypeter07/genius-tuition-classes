@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { CLASSES_DATA, INSTITUTE_DETAILS, ClassBatch } from "@/data/tuitionData";
+import Image from "next/image";
+import { CLASSES_DATA, INSTITUTE_DETAILS } from "@/data/tuitionData";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { Clock, Users, BookOpen, Check, ArrowRight, MessageCircle } from "lucide-react";
+import { Clock, Users, Check, MessageCircle, Sparkles } from "lucide-react";
 
 export function ClassesSection() {
   const [activeTab, setActiveTab] = useState<string>("all");
@@ -65,7 +66,7 @@ export function ClassesSection() {
         </div>
 
         {/* Classes Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {filteredBatches.map((item) => (
             <Card
               key={item.id}
@@ -168,31 +169,53 @@ export function ClassesSection() {
           ))}
         </div>
 
-        {/* Free Offline Demo banner */}
-        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-blue-950/60 via-slate-900/80 to-indigo-950/60 border border-blue-500/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
-          <div className="space-y-1 text-center sm:text-left">
-            <h4 className="text-lg font-bold text-white">
-              Not sure which batch fits best for your child?
-            </h4>
-            <p className="text-sm text-slate-400">
-              Visit our Koradi center for a <strong>Free 2-Day Demo Class</strong> and personalized academic counseling with Akram Sir.
-            </p>
+        {/* Small Batch Visual Spotlight Banner with students-learning.jpg */}
+        <div className="rounded-3xl overflow-hidden bg-gradient-to-r from-blue-950/80 via-slate-900 to-indigo-950/80 border border-blue-500/30 shadow-2xl p-6 sm:p-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/50 border border-blue-500/40 text-xs font-semibold text-blue-300">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <span>Zero Backbencher Neglect Guarantee</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                Strict Limit of 15–18 Students Per Batch
+              </h3>
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+                Big coaching institutes pack 60 to 80 kids into one room where quiet students slip through the cracks. At Genius Tuition Classes in Koradi, Akram Sir personally knows every student’s strengths, weaknesses, and weekly test scores.
+              </p>
+              <div className="pt-2 flex flex-wrap gap-4">
+                <a
+                  href={INSTITUTE_DETAILS.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="whatsapp" size="md" className="rounded-full font-bold">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Book Free 2-Day Trial
+                  </Button>
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 relative">
+              <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden border border-slate-700 shadow-xl group">
+                <Image
+                  src="/images/students-learning.jpg"
+                  alt="Students learning and solving problems together at Genius Tuition Classes Koradi"
+                  fill
+                  className="object-cover group-hover:scale-103 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3 text-center">
+                  <span className="text-[11px] font-semibold text-slate-200 bg-slate-950/80 px-3 py-1 rounded-full border border-white/10">
+                    Collaborative Problem Solving & Mentoring
+                  </span>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <a
-            href={INSTITUTE_DETAILS.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0"
-          >
-            <Button
-              variant="whatsapp"
-              size="md"
-              className="rounded-full px-6 py-2.5 font-bold flex items-center gap-2"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>Book Free Demo Class</span>
-            </Button>
-          </a>
         </div>
 
       </div>

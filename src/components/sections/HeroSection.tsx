@@ -1,13 +1,12 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import {
   MessageCircle,
-  Phone,
   ArrowRight,
   UserCheck,
   Sparkles,
-  BookOpen,
   CheckCircle2,
   MapPin,
 } from "lucide-react";
@@ -124,114 +123,38 @@ export function HeroSection() {
           {/* Right Hero Visual: Authentic Study Desk & Book Stack Composition */}
           <div className="lg:col-span-5 relative flex justify-center items-center">
             
-            {/* Background Chalkboard & Classroom Lighting Aura */}
-            <div className="relative w-full max-w-md sm:max-w-lg rounded-3xl overflow-hidden p-6 sm:p-8 bg-gradient-to-br from-[#121c2e] via-[#0f172a] to-[#090f1d] border border-slate-700/60 shadow-2xl shadow-blue-950/50 group">
+            <div className="relative w-full max-w-md sm:max-w-lg rounded-3xl overflow-hidden p-2 bg-gradient-to-br from-blue-900/40 via-slate-900/60 to-slate-950 border border-slate-700/80 shadow-2xl shadow-blue-950/70 group">
               
-              {/* Blackboard Glow & Script text in the corner */}
-              <div className="absolute top-4 right-6 text-right select-none pointer-events-none">
-                <div className="font-serif italic text-slate-400/40 text-xl sm:text-2xl tracking-wider leading-tight">
-                  Learn <br />
-                  <span className="text-blue-300/40">Grow</span> <br />
-                  <span className="text-amber-200/50">Succeed</span>
-                </div>
-              </div>
-
-              {/* Decorative Subtle Grid / Graph paper hint */}
-              <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
-
-              {/* Composition Container */}
-              <div className="relative z-10 flex flex-col items-center pt-8 pb-4">
+              {/* Authentic Photo from image generation matching reference */}
+              <div className="relative w-full h-[340px] sm:h-[400px] rounded-[22px] overflow-hidden">
+                <Image
+                  src="/images/hero-study-desk.jpg"
+                  alt="Genius Tuition Classes study desk with Maths, Science, English and Social Studies textbooks"
+                  fill
+                  priority
+                  className="object-cover group-hover:scale-103 transition-transform duration-700"
+                />
                 
-                {/* Book Stack */}
-                <div className="w-full max-w-[340px] flex flex-col items-center space-y-2.5">
-                  
-                  {/* Book 1: Maths */}
-                  <div className="w-full transform -rotate-1 hover:rotate-0 transition-transform duration-300 bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white rounded-lg px-5 py-3 shadow-lg shadow-blue-900/40 border-l-8 border-l-amber-400 border-r border-t border-b border-blue-400/30 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded bg-white/20 flex items-center justify-center text-xs font-mono font-bold">
-                        ∑
-                      </div>
-                      <span className="font-bold text-base tracking-wide uppercase text-white drop-shadow-sm">
-                        Maths
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-semibold text-blue-100 bg-white/15 px-2 py-0.5 rounded">
-                      Formulas & Practice
-                    </span>
-                  </div>
+                {/* Gradient vignette overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070c18] via-transparent to-black/20" />
 
-                  {/* Book 2: Science */}
-                  <div className="w-[96%] transform rotate-1 hover:rotate-0 transition-transform duration-300 bg-gradient-to-r from-emerald-800 via-teal-700 to-cyan-800 text-white rounded-lg px-5 py-3 shadow-lg shadow-teal-950/50 border-l-8 border-l-emerald-300 border-r border-t border-b border-teal-500/30 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded bg-white/20 flex items-center justify-center text-xs font-mono font-bold">
-                        ⚗️
-                      </div>
-                      <span className="font-bold text-base tracking-wide uppercase text-white drop-shadow-sm">
-                        Science
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-semibold text-teal-100 bg-white/15 px-2 py-0.5 rounded">
-                      Physics • Chem • Bio
-                    </span>
-                  </div>
-
-                  {/* Book 3: English */}
-                  <div className="w-[98%] transform -rotate-0.5 hover:rotate-0 transition-transform duration-300 bg-gradient-to-r from-indigo-900 via-slate-800 to-indigo-950 text-white rounded-lg px-5 py-3 shadow-lg shadow-indigo-950/60 border-l-8 border-l-indigo-400 border-r border-t border-b border-indigo-500/30 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded bg-white/20 flex items-center justify-center text-xs font-mono font-bold">
-                        ✍️
-                      </div>
-                      <span className="font-bold text-base tracking-wide uppercase text-white drop-shadow-sm">
-                        English
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-semibold text-indigo-200 bg-white/15 px-2 py-0.5 rounded">
-                      Grammar & Writing
-                    </span>
-                  </div>
-
-                  {/* Book 4: Social Studies */}
-                  <div className="w-full transform rotate-0.5 hover:rotate-0 transition-transform duration-300 bg-gradient-to-r from-amber-900 via-amber-800 to-stone-800 text-white rounded-lg px-5 py-3 shadow-xl shadow-stone-950/70 border-l-8 border-l-orange-400 border-r border-t border-b border-amber-600/30 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded bg-white/20 flex items-center justify-center text-xs font-mono font-bold">
-                        🌍
-                      </div>
-                      <span className="font-bold text-base tracking-wide uppercase text-white drop-shadow-sm">
-                        Social Studies
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-semibold text-amber-100 bg-white/15 px-2 py-0.5 rounded">
-                      History • Civics • Geo
-                    </span>
-                  </div>
-
+                {/* Floating pill badges on the image */}
+                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                  <span className="px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md border border-white/20 text-[11px] font-bold text-white shadow-lg">
+                    📚 Complete Study Materials
+                  </span>
                 </div>
 
-                {/* Desk Base & Stationery Accessories representation */}
-                <div className="w-full mt-4 pt-3 border-t border-slate-700/50 flex items-center justify-between px-2 text-xs text-slate-400">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-sm shadow">
-                      ✏️
-                    </div>
-                    <div>
-                      <div className="font-semibold text-slate-200">Daily Study Desk</div>
-                      <div className="text-[10px] text-slate-400">Printed Notes & Tests</div>
-                    </div>
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80 text-xs">
+                  <div className="space-y-0.5">
+                    <div className="font-bold text-white">Daily Offline Batches</div>
+                    <div className="text-[11px] text-slate-400">Koradi Center, Nagpur</div>
                   </div>
-
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-900/40 border border-blue-700/40 text-blue-300 font-medium">
-                    <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                    <span>Koradi Center</span>
-                  </div>
+                  <span className="px-2.5 py-1 rounded-lg bg-blue-600 text-white font-bold text-[11px] shadow-sm">
+                    Admissions Open
+                  </span>
                 </div>
 
-              </div>
-
-              {/* Floating Bottom Badge */}
-              <div className="mt-3 bg-gradient-to-r from-blue-950/80 to-slate-900/90 border border-blue-500/20 rounded-2xl p-3 text-center shadow-lg">
-                <span className="text-xs text-slate-300">
-                  Admissions Open for <span className="font-bold text-white">2026-2027 Batches</span>
-                </span>
               </div>
 
             </div>

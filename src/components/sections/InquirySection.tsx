@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import { INSTITUTE_DETAILS } from "@/data/tuitionData";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import {
   Send,
   MessageCircle,
@@ -12,6 +15,7 @@ import {
   Clock,
   MapPin,
   AlertCircle,
+  Sparkles,
 } from "lucide-react";
 
 export function InquirySection() {
@@ -36,14 +40,13 @@ export function InquirySection() {
 
   const handleWhatsAppSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Also save in DB asynchronously
     try {
       fetch("/api/inquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-    } catch (err) {}
+    } catch {}
 
     const msg = `*Genius Tuition Classes - Admission Inquiry*
 ---------------------------------------
@@ -54,7 +57,7 @@ export function InquirySection() {
 • Preferred Batch: ${formData.batchPreference}
 • Notes/Queries: ${formData.notes || "None"}
 ---------------------------------------
-Please share details on available seats, batch timings, and demo classes.`;
+Please share batch timings, seat availability, and 2-day demo class schedule.`;
 
     const encoded = encodeURIComponent(msg);
     window.open(`https://wa.me/${INSTITUTE_DETAILS.phoneRaw}?text=${encoded}`, "_blank");
@@ -78,7 +81,7 @@ Please share details on available seats, batch timings, and demo classes.`;
       } else {
         setSubmitError(json.error || "Failed to submit. Please call or WhatsApp directly.");
       }
-    } catch (err: any) {
+    } catch {
       setSubmitError("Network error. Please WhatsApp us directly.");
     } finally {
       setIsSubmitting(false);
@@ -86,31 +89,31 @@ Please share details on available seats, batch timings, and demo classes.`;
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 relative bg-[#070c18]">
+    <section id="contact" className="py-20 md:py-24 relative bg-slate-950 border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <Badge variant="default" className="text-blue-400 bg-blue-950/60 border-blue-500/30">
-            Admissions Open
+          <Badge variant="default" className="text-blue-400 bg-blue-950 border-blue-800">
+            Admissions Open 2025–26
           </Badge>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            Inquire for New Batches & Free Demo Class
+            Inquire for New Batches &amp; Free Demo Class
           </h2>
           <p className="text-slate-400 text-base sm:text-lg">
             Seats are strictly capped at 15 to 18 students per batch. Submit your details below or connect directly with Akram Sir.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: Direct Contact & Office Hours */}
           <div className="lg:col-span-5 space-y-6">
             
-            <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 space-y-6 shadow-xl">
+            <Card className="p-6 sm:p-7 bg-slate-900 border-slate-800 space-y-6 shadow-xl">
               <div>
                 <span className="text-xs font-semibold uppercase text-blue-400 tracking-wider">
-                  Contact Person
+                  Contact Person &amp; Director
                 </span>
                 <h3 className="text-2xl font-black text-white mt-1">
                   AKRAM SIR
@@ -121,18 +124,18 @@ Please share details on available seats, batch timings, and demo classes.`;
               </div>
 
               {/* Phone Action Card */}
-              <div className="p-4 rounded-2xl bg-blue-950/40 border border-blue-500/30 flex items-center justify-between">
+              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <div className="text-[11px] text-blue-300 font-semibold uppercase">
+                  <div className="text-[11px] text-blue-400 font-semibold uppercase">
                     Call Directly
                   </div>
-                  <div className="text-base sm:text-lg font-bold text-white">
+                  <div className="text-base sm:text-lg font-bold text-white font-mono">
                     {INSTITUTE_DETAILS.phone}
                   </div>
                 </div>
                 <a
                   href={`tel:${INSTITUTE_DETAILS.phoneRaw}`}
-                  className="p-3 bg-blue-600 hover:bg-blue-500 rounded-full text-white shadow-md shadow-blue-600/30 transition-transform active:scale-95"
+                  className="p-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-white shadow-md transition-transform active:scale-95"
                   aria-label="Call Akram Sir"
                 >
                   <Phone className="w-5 h-5" />
@@ -140,20 +143,20 @@ Please share details on available seats, batch timings, and demo classes.`;
               </div>
 
               {/* WhatsApp Action Card */}
-              <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-between">
+              <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-800/60 flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <div className="text-[11px] text-emerald-300 font-semibold uppercase">
+                  <div className="text-[11px] text-emerald-400 font-semibold uppercase">
                     Instant WhatsApp Chat
                   </div>
-                  <div className="text-sm font-medium text-slate-200">
-                    Get quick fee & schedule details
+                  <div className="text-xs sm:text-sm font-medium text-slate-200">
+                    Get quick fee &amp; schedule details
                   </div>
                 </div>
                 <a
                   href={INSTITUTE_DETAILS.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-emerald-600 hover:bg-emerald-500 rounded-full text-white shadow-md shadow-emerald-600/30 transition-transform active:scale-95"
+                  className="p-3 bg-emerald-600 hover:bg-emerald-500 rounded-lg text-white shadow-md transition-transform active:scale-95"
                   aria-label="Chat with Akram Sir on WhatsApp"
                 >
                   <MessageCircle className="w-5 h-5" />
@@ -164,16 +167,16 @@ Please share details on available seats, batch timings, and demo classes.`;
               <div className="space-y-3 pt-2 border-t border-slate-800">
                 <div className="flex items-center gap-2 text-sm font-bold text-white">
                   <Clock className="w-4 h-4 text-blue-400" />
-                  <span>Class & Office Visiting Hours</span>
+                  <span>Class &amp; Center Visiting Hours</span>
                 </div>
                 <div className="space-y-1.5 text-xs text-slate-300">
                   <div className="flex justify-between">
                     <span className="text-slate-400">Morning Session:</span>
-                    <span className="font-semibold">{INSTITUTE_DETAILS.visitingHours.morning}</span>
+                    <span className="font-semibold text-white">{INSTITUTE_DETAILS.visitingHours.morning}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Evening Session:</span>
-                    <span className="font-semibold">{INSTITUTE_DETAILS.visitingHours.evening}</span>
+                    <span className="font-semibold text-white">{INSTITUTE_DETAILS.visitingHours.evening}</span>
                   </div>
                   <div className="text-[11px] text-slate-500 pt-1">
                     {INSTITUTE_DETAILS.visitingHours.days}
@@ -192,39 +195,38 @@ Please share details on available seats, batch timings, and demo classes.`;
                 </p>
               </div>
 
-            </div>
+            </Card>
 
           </div>
 
           {/* Right Column: Interactive Admission Form */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-10 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl relative">
+            <Card className="p-6 sm:p-8 bg-slate-900 border-slate-800 shadow-xl relative">
               
               {isSubmitted ? (
                 <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
                   <h3 className="text-2xl font-bold text-white">
-                    Inquiry Received & Saved!
+                    Inquiry Received &amp; Saved!
                   </h3>
                   <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
                     Thank you, <strong>{formData.studentName}</strong>. Your inquiry has been sent to Akram Sir and logged into our management system. We will contact you at <strong>{formData.parentPhone}</strong>.
                   </p>
-                  <div className="pt-4 flex justify-center gap-4">
+                  <div className="pt-4 flex flex-wrap justify-center gap-3">
                     <a
                       href={INSTITUTE_DETAILS.whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Button variant="whatsapp" size="md">
+                      <Button variant="whatsapp">
                         <MessageCircle className="w-4 h-4 mr-2" />
                         Chat on WhatsApp Now
                       </Button>
                     </a>
                     <Button
                       variant="outline"
-                      size="md"
                       onClick={() => setIsSubmitted(false)}
                     >
                       Submit Another Inquiry
@@ -232,9 +234,9 @@ Please share details on available seats, batch timings, and demo classes.`;
                   </div>
                 </div>
               ) : (
-                <form className="space-y-5" onSubmit={handleDirectSubmit}>
-                  <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                    <h3 className="text-xl font-bold text-white">
+                <form className="space-y-4" onSubmit={handleDirectSubmit}>
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                    <h3 className="text-lg font-bold text-white">
                       Send Admission Inquiry
                     </h3>
                     <span className="text-xs text-blue-400 font-medium">
@@ -243,161 +245,120 @@ Please share details on available seats, batch timings, and demo classes.`;
                   </div>
 
                   {submitError && (
-                    <div className="p-3 rounded-xl bg-red-950/60 border border-red-800/50 text-red-300 text-xs flex items-center gap-2">
+                    <div className="p-3 rounded-lg bg-red-950/80 border border-red-800 text-red-300 text-xs flex items-center gap-2">
                       <AlertCircle className="w-4 h-4 shrink-0" />
                       <span>{submitError}</span>
                     </div>
                   )}
 
                   {/* Student Name */}
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-slate-300">
                       Student Full Name *
                     </label>
-                    <input
+                    <Input
                       type="text"
                       name="studentName"
                       required
                       value={formData.studentName}
                       onChange={handleChange}
                       placeholder="e.g. Rahul Sharma"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                     />
                   </div>
 
                   {/* Parent Mobile Number */}
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-slate-300">
                       Parent / Guardian Mobile Number *
                     </label>
-                    <input
+                    <Input
                       type="tel"
                       name="parentPhone"
                       required
                       value={formData.parentPhone}
                       onChange={handleChange}
                       placeholder="e.g. 9876543210"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                     />
                   </div>
 
-                  {/* Class and Preferred Batch in 2 Columns */}
+                  {/* Class and Preferred Batch */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-300">
                         Class / Grade *
                       </label>
                       <select
                         name="grade"
                         value={formData.grade}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                        className="flex h-10 w-full rounded-lg border border-slate-700/80 bg-slate-900 px-3 py-2 text-sm text-slate-100 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                       >
-                        <option value="Class 5th">Class 5th</option>
-                        <option value="Class 6th">Class 6th</option>
-                        <option value="Class 7th">Class 7th</option>
-                        <option value="Class 8th">Class 8th</option>
-                        <option value="Class 9th">Class 9th</option>
-                        <option value="Class 10th (SSC / CBSE)">Class 10th (SSC / CBSE)</option>
-                        <option value="Class 11th">Class 11th</option>
-                        <option value="Class 12th">Class 12th</option>
+                        <option value="Class 5th - 8th Foundation">Class 5th - 8th Foundation</option>
+                        <option value="Class 9th Pre-Board">Class 9th Pre-Board</option>
+                        <option value="Class 10th SSC / CBSE">Class 10th SSC / CBSE</option>
+                        <option value="Class 11th - 12th Senior">Class 11th - 12th Senior</option>
                       </select>
                     </div>
 
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                        Preferred Batch *
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-300">
+                        Batch Preference
                       </label>
                       <select
                         name="batchPreference"
                         value={formData.batchPreference}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                        className="flex h-10 w-full rounded-lg border border-slate-700/80 bg-slate-900 px-3 py-2 text-sm text-slate-100 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                       >
-                        <option value="Evening Batch">Evening Batch (After School)</option>
-                        <option value="Morning Batch">Morning Batch (Early Hours)</option>
-                        <option value="Weekend / Doubt Special">Weekend Special</option>
+                        <option value="Evening Batch">Evening Batch (4:30 PM - 7:30 PM)</option>
+                        <option value="Morning Batch">Morning Batch (6:45 AM - 8:45 AM)</option>
+                        <option value="Weekend Batch">Weekend Intensive</option>
                       </select>
                     </div>
                   </div>
 
-                  {/* Subjects */}
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                      Subjects Needed
+                  {/* Message/Notes */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-slate-300">
+                      Message / Questions / School Name
                     </label>
-                    <select
-                      name="subjects"
-                      value={formData.subjects}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                    >
-                      <option value="All Core Subjects (Maths, Science, English, Social)">
-                        All Core Subjects (Maths, Science, English, Social)
-                      </option>
-                      <option value="Mathematics & Science Only">
-                        Mathematics & Science Only
-                      </option>
-                      <option value="Mathematics Special">
-                        Mathematics Special Focus
-                      </option>
-                      <option value="Science Special">
-                        Science (Physics, Chem, Bio)
-                      </option>
-                    </select>
-                  </div>
-
-                  {/* Questions / Notes */}
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                      Any questions or specific requirements?
-                    </label>
-                    <textarea
+                    <Textarea
                       name="notes"
                       rows={3}
                       value={formData.notes}
                       onChange={handleChange}
-                      placeholder="e.g. Current marks in school, preferred timings, looking for 2-day demo class..."
-                      className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-none"
+                      placeholder="e.g. Looking for Mathematics & Science coaching for 10th boards..."
                     />
                   </div>
 
-                  {/* Action Buttons: 2 buttons */}
+                  {/* Buttons */}
                   <div className="pt-2 flex flex-col sm:flex-row gap-3">
                     <Button
                       type="submit"
-                      variant="primary"
-                      size="lg"
+                      variant="default"
                       isLoading={isSubmitting}
-                      className="w-full sm:flex-1 rounded-xl font-bold py-3.5"
+                      className="w-full sm:flex-1 font-bold h-11"
                     >
                       <Send className="w-4 h-4 mr-2" />
-                      Submit Inquiry
+                      <span>Submit Inquiry</span>
                     </Button>
 
                     <Button
                       type="button"
                       variant="whatsapp"
-                      size="lg"
                       onClick={handleWhatsAppSubmit}
-                      className="w-full sm:flex-1 rounded-xl font-bold py-3.5"
+                      className="w-full sm:w-auto h-11"
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
-                      Send via WhatsApp
+                      <span>Send via WhatsApp</span>
                     </Button>
                   </div>
-
-                  <p className="text-[11px] text-slate-500 text-center pt-1">
-                    🔒 Logged securely into Akram Sir&apos;s admission system.
-                  </p>
                 </form>
               )}
-
-            </div>
+            </Card>
           </div>
 
         </div>
-
       </div>
     </section>
   );

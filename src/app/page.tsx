@@ -18,24 +18,22 @@ import {
   getDbFaqs,
 } from "@/lib/db";
 
-
 export default async function Home() {
-  const [settings, classes, teachers, testimonials, faqs] = await Promise.all([
+  const [settings, classes, teachers, testimonials] = await Promise.all([
     getDbSettings(),
     getDbClasses(),
     getDbTeachers(),
     getDbTestimonials(),
-    getDbFaqs(),
   ]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#070c18] text-slate-100 selection:bg-blue-600 selection:text-white">
+    <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-blue-600 selection:text-white">
       {/* Sticky Header Navigation */}
       <Navbar />
 
       {/* Main Page Content */}
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* Authentic Hero Section */}
         <HeroSection />
 
         {/* 4 Feature Highlights band */}

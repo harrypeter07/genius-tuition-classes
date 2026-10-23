@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { GraduationCap, MapPin, MessageCircle, Shield } from "lucide-react";
+import { GraduationCap, MapPin, MessageCircle, Phone, Shield } from "lucide-react";
 import { INSTITUTE_DETAILS } from "@/data/tuitionData";
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -34,7 +34,7 @@ function YoutubeIcon({ className = "w-4 h-4" }: { className?: string }) {
 
 export function Footer() {
   return (
-    <footer className="bg-[#050812] border-t border-slate-800 text-slate-400">
+    <footer className="bg-slate-950 border-t border-slate-800 text-slate-400">
       
       {/* Top Footer with helpful links */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -61,8 +61,8 @@ export function Footer() {
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <span className="text-xs text-slate-500 font-medium">Mentor:</span>
-              <span className="text-xs font-semibold text-slate-200 bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full">
+              <span className="text-xs text-slate-500 font-medium">Head Educator:</span>
+              <span className="text-xs font-semibold text-slate-200 bg-slate-900 border border-slate-800 px-3 py-1 rounded-full">
                 Akram Sir (+91 91756 91457)
               </span>
             </div>
@@ -71,38 +71,38 @@ export function Footer() {
           {/* Quick Links */}
           <div className="space-y-3">
             <div className="text-xs font-semibold text-white uppercase tracking-wider">
-              Quick Links
+              Navigation
             </div>
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <a href="#home" className="hover:text-blue-400 transition-colors">
+                <Link href="/" className="hover:text-blue-400 transition-colors">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#classes" className="hover:text-blue-400 transition-colors">
-                  Classes & Batches
-                </a>
+                <Link href="/classes" className="hover:text-blue-400 transition-colors">
+                  Classes &amp; Batches
+                </Link>
               </li>
               <li>
-                <a href="#teachers" className="hover:text-blue-400 transition-colors">
-                  Faculty & Mentors
-                </a>
+                <Link href="/teachers" className="hover:text-blue-400 transition-colors">
+                  Faculty &amp; Mentors
+                </Link>
               </li>
               <li>
-                <a href="#results" className="hover:text-blue-400 transition-colors">
-                  Results & Testimonials
-                </a>
+                <Link href="/results" className="hover:text-blue-400 transition-colors">
+                  Results &amp; Testimonials
+                </Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-blue-400 transition-colors">
+                <Link href="/about" className="hover:text-blue-400 transition-colors">
                   Why Offline Coaching
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="hover:text-blue-400 transition-colors">
-                  Admissions & Demo Class
-                </a>
+                <Link href="/contact" className="hover:text-blue-400 transition-colors">
+                  Admissions &amp; Demo Class
+                </Link>
               </li>
               <li className="pt-2">
                 <Link
@@ -110,7 +110,7 @@ export function Footer() {
                   className="inline-flex items-center gap-1.5 text-blue-400 hover:text-blue-300 font-medium"
                 >
                   <Shield className="w-3.5 h-3.5" />
-                  <span>Admin / Management Portal</span>
+                  <span>Admin Management Portal</span>
                 </Link>
               </li>
             </ul>
@@ -124,8 +124,8 @@ export function Footer() {
             <ul className="space-y-2 text-xs sm:text-sm">
               <li className="text-slate-300">Class 5th - 8th Foundation</li>
               <li className="text-slate-300">Class 9th Pre-Board Batch</li>
-              <li className="text-slate-300">Class 10th SSC & CBSE Masterclass</li>
-              <li className="text-slate-300">Class 11th & 12th Board Coaching</li>
+              <li className="text-slate-300">Class 10th SSC &amp; CBSE Masterclass</li>
+              <li className="text-slate-300">Class 11th &amp; 12th Board Coaching</li>
               <li className="text-blue-400 font-medium">Max 15-18 Students / Batch</li>
             </ul>
           </div>
@@ -133,15 +133,15 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar: Exact Match to Mockup */}
-      <div className="border-t border-slate-900/80 bg-[#04060e] py-5">
+      {/* Bottom Bar */}
+      <div className="border-t border-slate-900 bg-slate-950 py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
             
             {/* Institute & Location */}
             <div className="flex items-center gap-3 text-slate-300">
               <span className="font-semibold text-white">Genius Tuition Classes</span>
-              <span className="text-slate-600 hidden sm:inline">•</span>
+              <span className="text-slate-600 hidden sm:inline">&bull;</span>
               <span className="flex items-center gap-1 text-slate-400">
                 <MapPin className="w-3.5 h-3.5 text-blue-400" />
                 Koradi, Nagpur
@@ -167,28 +167,28 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <a
                 href="#"
-                className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-pink-400 hover:border-pink-500/40 transition-colors"
+                className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-pink-400 hover:border-pink-500/40 transition-colors"
                 aria-label="Instagram"
               >
                 <InstagramIcon className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-blue-400 hover:border-blue-500/40 transition-colors"
+                className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-blue-400 hover:border-blue-500/40 transition-colors"
                 aria-label="Facebook"
               >
                 <FacebookIcon className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-red-400 hover:border-red-500/40 transition-colors"
+                className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-red-400 hover:border-red-500/40 transition-colors"
                 aria-label="YouTube"
               >
                 <YoutubeIcon className="w-4 h-4" />
               </a>
               <Link
                 href="/admin"
-                className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-blue-400 hover:border-blue-500/40 transition-colors"
+                className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-blue-400 hover:border-blue-500/40 transition-colors"
                 title="Admin Management Portal"
                 aria-label="Admin Portal"
               >

@@ -1,168 +1,239 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   MessageCircle,
+  Phone,
   ArrowRight,
-  UserCheck,
-  Sparkles,
   CheckCircle2,
   MapPin,
+  Sparkles,
+  Users,
+  Award,
+  BookOpen,
 } from "lucide-react";
 import { INSTITUTE_DETAILS } from "@/data/tuitionData";
 import { Button } from "../ui/button";
+import { Badge } from "../ui/badge";
+import { Card } from "../ui/card";
+import { BookDemoModal } from "../BookDemoModal";
 
 export function HeroSection() {
+  const [demoOpen, setDemoOpen] = useState(false);
+
   return (
-    <section
-      id="home"
-      className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-[#060b17] via-[#091224] to-[#0d1830]"
-    >
-      {/* Background ambient lighting effects */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full h-32 bg-gradient-to-t from-[#060b17] to-transparent pointer-events-none" />
+    <>
+      <section
+        id="home"
+        className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-slate-950 border-b border-slate-800/80"
+      >
+        {/* Subtle background grid pattern - authentic, not neon ai blobs */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          {/* Left Hero Content */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
-            {/* Pill Tagline */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 backdrop-blur-md shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-              <span className="text-xs sm:text-sm font-medium text-slate-300">
-                Better Learning <span className="text-blue-400">•</span> Brighter Future
-              </span>
-            </div>
-
-            {/* Main Headline */}
-            <div className="space-y-1">
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
-                Genius <br />
-                <span className="bg-gradient-to-r from-blue-300 via-blue-100 to-white bg-clip-text text-transparent">
-                  Tuition Classes
-                </span>
-              </h1>
-            </div>
-
-            {/* Sub-headline */}
-            <p className="text-lg sm:text-xl text-slate-300 font-normal max-w-xl leading-relaxed">
-              Quality education. Personal attention. Real progress.
-            </p>
-
-            {/* Guidance by Akram Sir Badge */}
-            <div className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-slate-900/90 border border-slate-700/70 shadow-inner">
-              <div className="w-7 h-7 rounded-full bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-400">
-                <UserCheck className="w-4 h-4" />
-              </div>
-              <span className="text-sm font-semibold text-slate-200">
-                Guidance by <span className="text-blue-400 font-bold">Akram Sir</span>
-              </span>
-              <span className="hidden sm:inline-block text-xs bg-blue-950/80 text-blue-300 px-2 py-0.5 rounded-md border border-blue-800/40">
-                10+ Yrs Exp
-              </span>
-            </div>
-
-            {/* Offline Coaching Location Callout */}
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-              <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Offline Classroom Coaching in <strong className="text-slate-200">Koradi, Nagpur</strong></span>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-4 w-full sm:w-auto">
-              <a
-                href={INSTITUTE_DETAILS.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto"
-              >
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white rounded-full px-7 py-3.5 font-semibold shadow-xl shadow-blue-600/30 flex items-center justify-center gap-2.5 text-base border border-blue-400/40 transition-all hover:scale-102"
-                >
-                  <MessageCircle className="w-5 h-5 fill-white/20" />
-                  <span>Call / WhatsApp</span>
-                </Button>
-              </a>
-
-              <a href="#classes" className="w-full sm:w-auto">
-                <Button
-                  variant="glass"
-                  size="lg"
-                  className="w-full sm:w-auto rounded-full px-7 py-3.5 font-medium text-slate-200 hover:text-white border border-slate-700/80 bg-slate-800/60 hover:bg-slate-700/80 flex items-center justify-center gap-2 text-base transition-all"
-                >
-                  <span>Learn More</span>
-                  <ArrowRight className="w-4 h-4 text-blue-400" />
-                </Button>
-              </a>
-            </div>
-
-            {/* Quick trust metrics */}
-            <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-slate-400 border-t border-slate-800/60 w-full max-w-lg">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-blue-400" />
-                <span>100% Offline Focus</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-blue-400" />
-                <span>Max 15-18 per batch</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-blue-400" />
-                <span>Weekly Tests</span>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right Hero Visual: Authentic Study Desk & Book Stack Composition */}
-          <div className="lg:col-span-5 relative flex justify-center items-center">
-            
-            <div className="relative w-full max-w-md sm:max-w-lg rounded-3xl overflow-hidden p-2 bg-gradient-to-br from-blue-900/40 via-slate-900/60 to-slate-950 border border-slate-700/80 shadow-2xl shadow-blue-950/70 group">
+            {/* Left Column: Authentic Copy & Actions */}
+            <div className="lg:col-span-7 flex flex-col items-start space-y-6">
               
-              {/* Authentic Photo from image generation matching reference */}
-              <div className="relative w-full h-[340px] sm:h-[400px] rounded-[22px] overflow-hidden">
-                <Image
-                  src="/images/hero-study-desk.jpg"
-                  alt="Genius Tuition Classes study desk with Maths, Science, English and Social Studies textbooks"
-                  fill
-                  priority
-                  className="object-cover group-hover:scale-103 transition-transform duration-700"
-                />
+              {/* Trust Badge */}
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-700/80 text-xs font-semibold text-slate-200 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span>Admissions Open 2025–26</span>
+                <span className="text-slate-600">•</span>
+                <span className="text-blue-400">Koradi, Nagpur</span>
+              </div>
+
+              {/* Main Headline - Natural, High Trust */}
+              <div className="space-y-3">
+                <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
+                  Where Every Student Matters &amp;{" "}
+                  <span className="text-blue-500">Marks Follow Understanding</span>
+                </h1>
+                <p className="text-base sm:text-lg text-slate-300 font-normal max-w-2xl leading-relaxed">
+                  Premier <strong>offline classroom coaching</strong> for Classes 5th to 12th under the dedicated personal guidance of <strong>Akram Sir</strong>. We strictly cap batches at 15–18 students so no child gets lost in the crowd.
+                </p>
+              </div>
+
+              {/* Key Trust Signals Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full max-w-xl pt-1">
+                <div className="flex items-center gap-2 text-xs font-medium text-slate-300 bg-slate-900/80 border border-slate-800 rounded-lg p-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Max 15–18 per Batch</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-medium text-slate-300 bg-slate-900/80 border border-slate-800 rounded-lg p-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Weekly Sunday Tests</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-medium text-slate-300 bg-slate-900/80 border border-slate-800 rounded-lg p-2.5 col-span-2 sm:col-span-1">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Daily Doubt Clearing</span>
+                </div>
+              </div>
+
+              {/* Call-to-Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto pt-2">
+                <Button
+                  variant="default"
+                  size="lg"
+                  onClick={() => setDemoOpen(true)}
+                  className="w-full sm:w-auto shadow-lg shadow-blue-600/30 text-base"
+                >
+                  <Sparkles className="w-4 h-4 mr-1 text-amber-300" />
+                  <span>Book Free 2-Day Demo</span>
+                </Button>
+
+                <a
+                  href={INSTITUTE_DETAILS.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <Button
+                    variant="whatsapp"
+                    size="lg"
+                    className="w-full sm:w-auto text-base"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-1" />
+                    <span>WhatsApp Akram Sir</span>
+                  </Button>
+                </a>
+
+                <Link href="/classes" className="w-full sm:w-auto">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full sm:w-auto text-base"
+                  >
+                    <span>View Batches</span>
+                    <ArrowRight className="w-4 h-4 ml-1 text-slate-400" />
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Offline Location & Contact Banner */}
+              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-2 border-t border-slate-800/80 w-full max-w-xl">
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-blue-400" />
+                  <span>Near Koradi Devi Temple Road, Nagpur</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                  <a href={`tel:${INSTITUTE_DETAILS.phoneRaw}`} className="text-slate-300 hover:text-white font-mono">
+                    +91 91756 91457
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Real Classroom Photography & Authentic Cards */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-700/90 shadow-2xl bg-slate-900 group">
                 
-                {/* Gradient vignette overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070c18] via-transparent to-black/20" />
-
-                {/* Floating pill badges on the image */}
-                <div className="absolute top-4 left-4 flex flex-col gap-2">
-                  <span className="px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md border border-white/20 text-[11px] font-bold text-white shadow-lg">
-                    📚 Complete Study Materials
-                  </span>
-                </div>
-
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80 text-xs">
-                  <div className="space-y-0.5">
-                    <div className="font-bold text-white">Daily Offline Batches</div>
-                    <div className="text-[11px] text-slate-400">Koradi Center, Nagpur</div>
+                {/* Main Real Educational Photo */}
+                <div className="relative w-full h-[380px] sm:h-[430px]">
+                  <Image
+                    src="/images/hero-classroom.jpg"
+                    alt="Authentic offline coaching classroom at Genius Tuition Classes Koradi Nagpur"
+                    fill
+                    priority
+                    className="object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
+                  
+                  {/* Natural subtle gradient for legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                  
+                  {/* Floating Metric 1: Board Score */}
+                  <div className="absolute top-4 left-4 bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-xl p-3 shadow-xl">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
+                        <Award className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-white">96.4% Top Score</div>
+                        <div className="text-[10px] text-slate-400">Class 10th Board 2024</div>
+                      </div>
+                    </div>
                   </div>
-                  <span className="px-2.5 py-1 rounded-lg bg-blue-600 text-white font-bold text-[11px] shadow-sm">
-                    Admissions Open
-                  </span>
+
+                  {/* Floating Metric 2: Mentor Badge */}
+                  <div className="absolute top-4 right-4 bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-xl px-3 py-1.5 shadow-xl text-right">
+                    <div className="text-[11px] font-bold text-amber-300">10+ Years Trust</div>
+                    <div className="text-[10px] text-slate-400">Akram Sir Mentorship</div>
+                  </div>
+
+                  {/* Bottom Strip: Real Highlights */}
+                  <div className="absolute bottom-4 left-4 right-4 bg-slate-900/95 backdrop-blur-md border border-slate-700/90 rounded-xl p-3 text-xs shadow-xl">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-emerald-600/20 text-emerald-400 flex items-center justify-center">
+                          <Users className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="font-bold text-white text-xs">Small Batch Guarantee</div>
+                          <div className="text-[11px] text-slate-400">Strictly 15–18 students per class</div>
+                        </div>
+                      </div>
+                      <Badge variant="default" className="bg-blue-600 text-white font-bold text-[10px] px-2 py-0.5">
+                        Admissions Open
+                      </Badge>
+                    </div>
+                  </div>
+
                 </div>
 
+              </div>
+
+              {/* Mini thumbnails strip highlighting study environment */}
+              <div className="grid grid-cols-3 gap-2.5 mt-3">
+                <div className="relative h-20 rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+                  <Image
+                    src="/images/offline-classroom.jpg"
+                    alt="Classroom study desks"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/40 flex items-end p-1.5">
+                    <span className="text-[10px] font-semibold text-white drop-shadow">Classroom</span>
+                  </div>
+                </div>
+
+                <div className="relative h-20 rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+                  <Image
+                    src="/images/math-notes.jpg"
+                    alt="Handwritten math notes and practice"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/40 flex items-end p-1.5">
+                    <span className="text-[10px] font-semibold text-white drop-shadow">Formula Notes</span>
+                  </div>
+                </div>
+
+                <div className="relative h-20 rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+                  <Image
+                    src="/images/doubt-session.jpg"
+                    alt="1-on-1 teacher doubt session"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/40 flex items-end p-1.5">
+                    <span className="text-[10px] font-semibold text-white drop-shadow">1-on-1 Doubts</span>
+                  </div>
+                </div>
               </div>
 
             </div>
 
           </div>
-
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Demo Class Modal */}
+      <BookDemoModal isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
+    </>
   );
 }

@@ -48,7 +48,7 @@ export function InquirySection() {
       });
     } catch {}
 
-    const msg = `*Genius Tuition Classes - Admission Inquiry*
+    const msg = `*Akram's Genius Academy - Admission Inquiry*
 ---------------------------------------
 • Student Name: ${formData.studentName || "Prospective Student"}
 • Parent Phone: ${formData.parentPhone || "Not specified"}
@@ -119,7 +119,7 @@ Please share batch timings, seat availability, and 2-day demo class schedule.`;
                   AKRAM SIR
                 </h3>
                 <p className="text-xs text-slate-400">
-                  {INSTITUTE_DETAILS.roleTitle} • Genius Tuition Classes
+                  {INSTITUTE_DETAILS.roleTitle} • Akram&apos;s Genius Academy
                 </p>
               </div>
 

@@ -71,7 +71,7 @@ export default function AdminPage() {
 
   // Settings form state
   const [settingsForm, setSettingsForm] = useState({
-    name: "Genius Tuition Classes",
+    name: "Akram's Genius Academy",
     tagline: "Better Learning • Brighter Future",
     motto: "Quality education. Personal attention. Real progress.",
     contactPerson: "AKRAM SIR",

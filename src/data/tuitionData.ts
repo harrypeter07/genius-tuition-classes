@@ -42,15 +42,15 @@ export interface FaqItem {
 }
 
 export const INSTITUTE_DETAILS = {
-  name: "Genius Tuition Classes",
-  shortName: "Genius Classes",
+  name: "Akram's Genius Academy",
+  shortName: "Akram's Genius Academy",
   tagline: "Better Learning • Brighter Future",
   motto: "Quality education. Personal attention. Real progress.",
   contactPerson: "AKRAM SIR",
   roleTitle: "Founder & Lead Educator",
   phone: "+91 91756 91457",
   phoneRaw: "919175691457",
-  whatsappUrl: "https://wa.me/919175691457?text=Hello%20Akram%20Sir%2C%20I%20would%20like%20to%20inquire%20about%20admissions%20at%20Genius%20Tuition%20Classes.",
+  whatsappUrl: "https://wa.me/919175691457?text=Hello%20Akram%20Sir%2C%20I%20would%20like%20to%20inquire%20about%20admissions%20at%20Akram's%20Genius%20Academy.",
   address: "Near Koradi Devi Temple Road / Koradi Power Station Colony, Koradi, Nagpur, Maharashtra - 441111",
   landmark: "Koradi, Nagpur, Maharashtra",
   city: "Nagpur, Maharashtra",

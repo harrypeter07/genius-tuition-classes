@@ -48,7 +48,7 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-white tracking-tight">
-                  Genius Tuition Classes
+                  Akram&apos;s Genius Academy
                 </span>
                 <span className="text-[11px] text-slate-400 uppercase tracking-wider">
                   Koradi, Nagpur
@@ -140,7 +140,7 @@ export function Footer() {
             
             {/* Institute & Location */}
             <div className="flex items-center gap-3 text-slate-300">
-              <span className="font-semibold text-white">Genius Tuition Classes</span>
+              <span className="font-semibold text-white">Akram&apos;s Genius Academy</span>
               <span className="text-slate-600 hidden sm:inline">&bull;</span>
               <span className="flex items-center gap-1 text-slate-400">
                 <MapPin className="w-3.5 h-3.5 text-blue-400" />

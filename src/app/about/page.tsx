@@ -23,9 +23,9 @@ import {
 import { INSTITUTE_DETAILS } from "@/data/tuitionData";
 
 export const metadata: Metadata = {
-  title: "About Us | Genius Tuition Classes Koradi Nagpur",
+  title: "About Us | Akram's Genius Academy Koradi Nagpur",
   description:
-    "Learn about Genius Tuition Classes, Koradi, Nagpur. Led by Akram Sir with 10+ years of dedicated offline classroom coaching.",
+    "Learn about Akram's Genius Academy, Koradi, Nagpur. Led by Akram Sir with 10+ years of dedicated offline classroom coaching.",
 };
 
 export default function AboutPage() {

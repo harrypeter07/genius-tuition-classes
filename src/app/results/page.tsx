@@ -22,9 +22,9 @@ import {
 import { INSTITUTE_DETAILS } from "@/data/tuitionData";
 
 export const metadata: Metadata = {
-  title: "Board Results & Toppers | Genius Tuition Classes Koradi Nagpur",
+  title: "Board Results & Toppers | Akram's Genius Academy Koradi Nagpur",
   description:
-    "See proven board exam results, student scorecards, and testimonials from Genius Tuition Classes in Koradi, Nagpur.",
+    "See proven board exam results, student scorecards, and testimonials from Akram's Genius Academy in Koradi, Nagpur.",
 };
 
 export default async function ResultsPage() {

@@ -24,9 +24,9 @@ import {
 import { INSTITUTE_DETAILS } from "@/data/tuitionData";
 
 export const metadata: Metadata = {
-  title: "Faculty & Mentors | Akram Sir - Genius Tuition Classes Koradi",
+  title: "Faculty & Mentors | Akram Sir - Akram's Genius Academy Koradi",
   description:
-    "Meet our experienced faculty led by Akram Sir (10+ years teaching experience). Mathematics, Science, and Board exam specialists in Koradi, Nagpur.",
+    "Meet our experienced faculty led by Akram Sir (10+ years teaching experience). Mathematics, Science, and Board exam specialists at Akram's Genius Academy, Koradi, Nagpur.",
 };
 
 export default async function TeachersPage() {

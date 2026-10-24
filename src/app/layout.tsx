@@ -13,10 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Genius Tuition Classes | Best Offline Coaching in Koradi, Nagpur",
+  title: "Akram's Genius Academy | Premier Offline Coaching in Koradi, Nagpur",
   description:
-    "Genius Tuition Classes in Koradi, Nagpur. Expert guidance by Akram Sir. Quality offline coaching for Class 5th to 12th in Maths, Science, English & Social Studies. Call +91 91756 91457.",
+    "Akram's Genius Academy in Koradi, Nagpur. Expert guidance by Akram Sir. Quality offline coaching for Class 5th to 12th in Maths, Science, English & Social Studies. Call +91 91756 91457.",
   keywords: [
+    "Akram's Genius Academy",
     "Genius Tuition Classes",
     "Tuition in Koradi",
     "Akram Sir Tuition Nagpur",
@@ -25,9 +26,9 @@ export const metadata: Metadata = {
     "Maths Science Tuition Nagpur",
     "Class 10 SSC CBSE Coaching Koradi",
   ],
-  authors: [{ name: "Akram Sir - Genius Tuition Classes" }],
+  authors: [{ name: "Akram Sir - Akram's Genius Academy" }],
   openGraph: {
-    title: "Genius Tuition Classes | Guidance by Akram Sir - Koradi, Nagpur",
+    title: "Akram's Genius Academy | Guidance by Akram Sir - Koradi, Nagpur",
     description:
       "Quality education. Personal attention. Real progress. Premier offline coaching in Koradi, Nagpur for Class 5 to 12.",
     type: "website",

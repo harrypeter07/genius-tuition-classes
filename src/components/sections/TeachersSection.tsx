@@ -19,7 +19,7 @@ export function TeachersSection({ teachers = TEACHERS_DATA, settings }: Teachers
   const otherTeachers = teachers.slice(1);
   const phoneRaw = settings?.phoneRaw || INSTITUTE_DETAILS.phoneRaw;
   const whatsappUrl = `https://wa.me/${phoneRaw}?text=${encodeURIComponent(
-    "Hello Akram Sir, I would like to inquire about admissions and faculty mentorship at Genius Tuition Classes."
+    "Hello Akram Sir, I would like to inquire about admissions and faculty mentorship at Akram's Genius Academy."
   )}`;
 
   return (
@@ -35,7 +35,7 @@ export function TeachersSection({ teachers = TEACHERS_DATA, settings }: Teachers
             Learn from Experienced &amp; Dedicated Mentors
           </h2>
           <p className="text-slate-400 text-base sm:text-lg">
-            At Genius Tuition Classes, our teachers simplify difficult concepts, verify every step of homework, and ensure no student hesitates to ask questions.
+            At Akram&apos;s Genius Academy, our teachers simplify difficult concepts, verify every step of homework, and ensure no student hesitates to ask questions.
           </p>
         </div>
 
@@ -54,7 +54,7 @@ export function TeachersSection({ teachers = TEACHERS_DATA, settings }: Teachers
                   <div className="relative w-full max-w-[300px] aspect-4/5 rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-950">
                     <Image
                       src="/images/akram-sir-teaching.jpg"
-                      alt="Akram Sir teaching Mathematics and Science at Genius Tuition Classes Koradi Nagpur"
+                      alt="Akram Sir teaching Mathematics and Science at Akram's Genius Academy Koradi Nagpur"
                       fill
                       className="object-cover"
                     />

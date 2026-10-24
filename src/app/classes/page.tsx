@@ -24,9 +24,9 @@ import {
 import { INSTITUTE_DETAILS } from "@/data/tuitionData";
 
 export const metadata: Metadata = {
-  title: "Tuition Classes & Batches | Genius Tuition Classes Koradi",
+  title: "Academic Classes & Batches | Akram's Genius Academy Koradi",
   description:
-    "Explore coaching batches for Class 5th to 12th in Koradi, Nagpur. Small batches of 15-18 students, weekly tests, personal attention by Akram Sir.",
+    "Explore coaching batches for Class 5th to 12th in Koradi, Nagpur at Akram's Genius Academy. Small batches of 15-18 students, weekly tests, personal attention by Akram Sir.",
 };
 
 export default async function ClassesPage() {

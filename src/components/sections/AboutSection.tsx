@@ -51,7 +51,7 @@ export function AboutSection() {
           
           <div className="lg:col-span-6 space-y-6">
             <Badge variant="default" className="text-blue-400 bg-blue-950 border-blue-800">
-              Why Choose Genius Tuition Classes
+              Why Choose Akram&apos;s Genius Academy
             </Badge>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
@@ -60,7 +60,7 @@ export function AboutSection() {
             </h2>
 
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-              In an age of crowded video apps where students are just passive screen viewers, <strong>Genius Tuition Classes</strong> provides the irreplaceable accountability of a real physical classroom in <strong>Koradi, Nagpur</strong>.
+              In an age of crowded video apps where students are just passive screen viewers, <strong>Akram&apos;s Genius Academy</strong> provides the irreplaceable accountability of a real physical classroom in <strong>Koradi, Nagpur</strong>.
             </p>
 
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
@@ -108,7 +108,7 @@ export function AboutSection() {
               <div className="relative w-full h-[320px] sm:h-[380px]">
                 <Image
                   src="/images/offline-classroom.jpg"
-                  alt="Disciplined offline coaching classroom at Genius Tuition Classes Koradi Nagpur"
+                  alt="Disciplined offline coaching classroom at Akram's Genius Academy Koradi Nagpur"
                   fill
                   className="object-cover"
                 />

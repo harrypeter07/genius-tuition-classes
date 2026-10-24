@@ -49,7 +49,7 @@ export function ClassesSection({ classes, settings }: ClassesSectionProps = {}) 
 
   const getInquiryUrl = (batchName: string) => {
     const text = encodeURIComponent(
-      `Hello Akram Sir, I am interested in admission for *${batchName}* at Genius Tuition Classes, Koradi. Please share batch schedule, seat availability, and fee details.`
+      `Hello Akram Sir, I am interested in admission for *${batchName}* at Akram's Genius Academy, Koradi. Please share batch schedule, seat availability, and fee details.`
     );
     return `https://wa.me/${phoneRaw}?text=${text}`;
   };

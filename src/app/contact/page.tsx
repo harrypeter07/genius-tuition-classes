@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingActions } from "@/components/FloatingActions";
@@ -81,7 +82,7 @@ export default function ContactPage() {
                 Center Directions
               </Badge>
               <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
-                How to Reach Genius Tuition Classes
+                How to Reach Akram&apos;s Genius Academy
               </h2>
               <p className="text-sm sm:text-base text-slate-400">
                 Conveniently located near the Koradi Devi Temple Road in Koradi, Nagpur.
@@ -92,6 +93,20 @@ export default function ContactPage() {
               
               {/* Address & Timings Summary */}
               <div className="lg:col-span-5 space-y-4">
+                {/* Classroom Photo Card */}
+                <div className="relative h-44 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-lg">
+                  <Image
+                    src="/images/offline-classroom.jpg"
+                    alt="Akram's Genius Academy Classroom Center in Koradi"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                  <div className="absolute bottom-2.5 left-3 right-3 text-xs font-semibold text-white">
+                    Offline Classroom &amp; Admission Desk
+                  </div>
+                </div>
+
                 <Card className="bg-slate-900 border-slate-800 p-6 space-y-4">
                   <div className="flex items-center gap-2 text-white font-bold text-base">
                     <MapPin className="w-5 h-5 text-emerald-400" />
@@ -129,9 +144,9 @@ export default function ContactPage() {
 
               {/* Google Maps Embed for Koradi, Nagpur */}
               <div className="lg:col-span-7">
-                <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900 h-[360px] sm:h-[400px] relative">
+                <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900 h-[360px] sm:h-[480px] relative">
                   <iframe
-                    title="Genius Tuition Classes Koradi Nagpur Map"
+                    title="Akram's Genius Academy Koradi Nagpur Map"
                     src="https://maps.google.com/maps?q=Koradi%2C%20Nagpur%2C%20Maharashtra&t=&z=14&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"

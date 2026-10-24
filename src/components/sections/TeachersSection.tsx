@@ -7,7 +7,19 @@ import { TEACHERS_DATA, INSTITUTE_DETAILS, Teacher } from "@/data/tuitionData";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { BookOpen, Star, Sparkles, MessageCircle, Phone, Award, CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  GraduationCap,
+  Star,
+  Sparkles,
+  MessageCircle,
+  Phone,
+  Award,
+  CheckCircle2,
+  ArrowRight,
+  BookOpen,
+  Atom,
+  HelpCircle,
+} from "lucide-react";
 
 interface TeachersSectionProps {
   teachers?: Teacher[];
@@ -29,13 +41,13 @@ export function TeachersSection({ teachers = TEACHERS_DATA, settings }: Teachers
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <Badge variant="default" className="text-blue-400 bg-blue-950 border-blue-800">
-            Dedicated Faculty
+            Dedicated Mentorship
           </Badge>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Learn from Experienced &amp; Dedicated Mentors
           </h2>
           <p className="text-slate-400 text-base sm:text-lg">
-            At Akram&apos;s Genius Academy, our teachers simplify difficult concepts, verify every step of homework, and ensure no student hesitates to ask questions.
+            At Akram&apos;s Genius Academy, our faculty simplifies difficult concepts, verifies every step of homework, and ensures no student hesitates to ask questions.
           </p>
         </div>
 
@@ -44,37 +56,44 @@ export function TeachersSection({ teachers = TEACHERS_DATA, settings }: Teachers
           <div className="mb-14">
             <Card className="p-6 sm:p-10 bg-slate-900 border-slate-700/80 shadow-2xl overflow-hidden relative">
               <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-5 py-1.5 rounded-bl-xl uppercase tracking-wider shadow-md">
-                Head Educator
+                Head Educator &amp; Founder
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
-                {/* Real Photo of Akram Sir Teaching */}
+                {/* Prestigious Educator Seal & Center Visual (Strictly No Fake Person Photo) */}
                 <div className="lg:col-span-5 flex flex-col items-center">
-                  <div className="relative w-full max-w-[300px] aspect-4/5 rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-950">
-                    <Image
-                      src="/images/akram-sir-teaching.jpg"
-                      alt="Akram Sir teaching Mathematics and Science at Akram's Genius Academy Koradi Nagpur"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="relative w-full max-w-[320px] rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-950 p-6 flex flex-col items-center text-center space-y-4">
                     
-                    <div className="absolute bottom-3 left-3 right-3 text-center">
-                      <span className="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                        10+ Years Experience in Koradi
-                      </span>
+                    {/* Golden/Blue Monogram Seal */}
+                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-500 text-white flex items-center justify-center shadow-lg shadow-blue-600/30 border-2 border-blue-400/40">
+                      <GraduationCap className="w-12 h-12" />
                     </div>
-                  </div>
 
-                  <div className="mt-4 text-center space-y-0.5">
-                    <h3 className="text-2xl font-black text-white">{leadTeacher.name}</h3>
-                    <div className="text-xs font-semibold text-blue-400 uppercase tracking-wide">
-                      {leadTeacher.role}
+                    <div className="space-y-1">
+                      <span className="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-950/80 border border-blue-800/80 px-3 py-1 rounded-full inline-block">
+                        10+ Years in Koradi
+                      </span>
+                      <h3 className="text-2xl font-black text-white pt-1">{leadTeacher.name}</h3>
+                      <div className="text-xs font-semibold text-slate-300">
+                        {leadTeacher.role}
+                      </div>
+                      <div className="text-xs text-slate-400">
+                        {leadTeacher.qualification}
+                      </div>
                     </div>
-                    <div className="text-xs text-slate-400">
-                      {leadTeacher.qualification}
+
+                    <div className="w-full pt-3 border-t border-slate-800 text-xs text-slate-400 space-y-1">
+                      <div className="flex justify-between">
+                        <span>Mentored:</span>
+                        <strong className="text-white">850+ Board Students</strong>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Center:</span>
+                        <strong className="text-white">Koradi, Nagpur</strong>
+                      </div>
                     </div>
+
                   </div>
                 </div>
 
@@ -139,34 +158,24 @@ export function TeachersSection({ teachers = TEACHERS_DATA, settings }: Teachers
           </div>
         )}
 
-        {/* Other Faculty Members Grid */}
+        {/* Other Faculty Members Grid (Using Subject Banners, NO fake person photos) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {otherTeachers.map((teacher, index) => {
-            const facultyImages = [
-              "/images/science-experiment.jpg",
-              "/images/hero-study-desk.jpg",
-              "/images/doubt-session.jpg",
-            ];
-            const fImg = facultyImages[index % facultyImages.length];
+            const icons = [Atom, BookOpen, HelpCircle];
+            const Icon = icons[index % icons.length];
 
             return (
               <Card
                 key={teacher.id || index}
-                className="bg-slate-900 border-slate-800 hover:border-slate-700 flex flex-col justify-between overflow-hidden transition-all duration-300"
+                className="bg-slate-900 border-slate-800 hover:border-slate-700 flex flex-col justify-between overflow-hidden transition-all duration-300 shadow-xl"
               >
-                <div className="relative h-40 w-full overflow-hidden border-b border-slate-800">
-                  <Image
-                    src={fImg}
-                    alt={teacher.name}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <span className="text-xs font-bold text-white bg-slate-900/90 border border-slate-700 px-2.5 py-1 rounded-md">
-                      {teacher.experience}
-                    </span>
+                <div className="p-6 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                    <Icon className="w-6 h-6" />
                   </div>
+                  <span className="text-xs font-bold text-white bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-md">
+                    {teacher.experience}
+                  </span>
                 </div>
 
                 <div>

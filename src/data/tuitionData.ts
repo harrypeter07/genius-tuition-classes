@@ -211,49 +211,7 @@ export const TEACHERS_DATA: Teacher[] = [
   },
 ];
 
-export const RESULTS_DATA: Testimonial[] = [
-  {
-    id: "res-1",
-    name: "Rohan M.",
-    grade: "Class 10th Board",
-    school: "Koradi School, Nagpur",
-    score: "96.4%",
-    quote:
-      "Before joining Akram Sir's classes, I was always nervous in Maths geometry and Science numericals. Akram Sir gave personal attention to each of my doubts. His weekly Sunday tests took away all my exam fear!",
-    year: "2024 Batch",
-  },
-  {
-    id: "res-2",
-    name: "Ananya Deshmukh",
-    grade: "Class 10th SSC",
-    school: "Nagpur District School",
-    score: "94.8% (Maths 98/100)",
-    quote:
-      "The small batch size makes a huge difference. You can't hide in the back row! Akram Sir knows every student's weak points and makes sure you solve problems on the board until you're confident.",
-    year: "2024 Batch",
-  },
-  {
-    id: "res-3",
-    name: "Mrs. Sunita Verma",
-    grade: "Parent of Ayush (Class 9th)",
-    school: "Nagpur Parent",
-    score: "Grade Jump from 62% to 89%",
-    quote:
-      "Offline coaching with Akram Sir brought discipline back into my son's routine. In today's digital distraction age, having a dedicated physical classroom with strict attendance and caring teachers is a blessing.",
-    parentName: "Parent",
-    year: "2024",
-  },
-  {
-    id: "res-4",
-    name: "Sameer Sheikh",
-    grade: "Class 8th Foundation",
-    school: "Koradi Central",
-    score: "Top Rank in School",
-    quote:
-      "Genius Tuition Classes made Science my favorite subject. The study material is short, clear, and very easy to revise before examinations.",
-    year: "2024 Batch",
-  },
-];
+export const RESULTS_DATA: Testimonial[] = [];
 
 export const FAQS_DATA: FaqItem[] = [
   {

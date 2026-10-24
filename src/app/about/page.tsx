@@ -84,7 +84,7 @@ export default function AboutPage() {
                 <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-950">
                   <Image
                     src="/images/offline-classroom.jpg"
-                    alt="Genius Tuition Classes classroom in Koradi"
+                    alt="Akram's Genius Academy classroom in Koradi"
                     fill
                     className="object-cover"
                   />

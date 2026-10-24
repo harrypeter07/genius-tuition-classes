@@ -19,11 +19,10 @@ import {
 } from "@/lib/db";
 
 export default async function Home() {
-  const [settings, classes, teachers, testimonials] = await Promise.all([
+  const [settings, classes, teachers] = await Promise.all([
     getDbSettings(),
     getDbClasses(),
     getDbTeachers(),
-    getDbTestimonials(),
   ]);
 
   return (
@@ -48,8 +47,8 @@ export default async function Home() {
         {/* Faculty & Mentors led by Akram Sir - Live from DB */}
         <TeachersSection teachers={teachers} settings={settings} />
 
-        {/* Proven Results & Student Testimonials - Live from DB */}
-        <ResultsSection testimonials={testimonials} settings={settings} />
+        {/* Academic Results & Board Focus */}
+        <ResultsSection />
 
         {/* Admission Inquiry & Free Demo Class Form */}
         <InquirySection />

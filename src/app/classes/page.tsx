@@ -74,7 +74,7 @@ export default async function ClassesPage() {
                 <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-950">
                   <Image
                     src="/images/hero-study-desk.jpg"
-                    alt="Study desk textbooks and notes at Genius Tuition Classes"
+                    alt="Study desk textbooks and notes at Akram's Genius Academy"
                     fill
                     className="object-cover"
                   />

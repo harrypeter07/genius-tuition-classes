@@ -36,8 +36,8 @@ export function ClassesSection({ classes, settings }: ClassesSectionProps = {}) 
       : allBatches.filter((item) => item.category === activeTab);
 
   const batchImages: Record<string, string> = {
-    "class-5-8": "/images/students-learning.jpg",
-    "class-9": "/images/doubt-session.jpg",
+    "class-5-8": "/images/hero-study-desk.jpg",
+    "class-9": "/images/offline-classroom.jpg",
     "class-10": "/images/math-notes.jpg",
     "class-11-12": "/images/science-experiment.jpg",
   };

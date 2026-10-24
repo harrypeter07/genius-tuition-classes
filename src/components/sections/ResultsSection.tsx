@@ -1,28 +1,49 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { RESULTS_DATA, INSTITUTE_DETAILS } from "@/data/tuitionData";
+import { INSTITUTE_DETAILS } from "@/data/tuitionData";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
-import { Star, Trophy, Quote, CheckCircle, TrendingUp, ArrowRight } from "lucide-react";
+import {
+  Trophy,
+  Award,
+  BookOpen,
+  CheckCircle2,
+  TrendingUp,
+  ShieldCheck,
+  FileCheck,
+  Building,
+  ArrowRight,
+} from "lucide-react";
 
-interface ResultsSectionProps {
-  testimonials?: any[];
-  settings?: Record<string, string>;
-}
-
-export function ResultsSection({ testimonials }: ResultsSectionProps = {}) {
-  const items = testimonials && testimonials.length > 0 ? testimonials : RESULTS_DATA;
-
-  const topperImages = [
-    "/images/student-topper-1.jpg",
-    "/images/student-topper-2.jpg",
-    "/images/student-topper-3.jpg",
-    "/images/student-topper-4.jpg",
+export function ResultsSection() {
+  const academicPillars = [
+    {
+      title: "12+ Simulated Board Prelims",
+      description: "Students write full-length, timed mock board exams before the real board examinations to eliminate stress and build time management.",
+      icon: FileCheck,
+      stat: "12 Prelims",
+    },
+    {
+      title: "Step-by-Step Board Paper Presentation",
+      description: "Trained on exact state board and CBSE answer evaluation guidelines so students never lose marks on presentation or formula derivations.",
+      icon: Award,
+      stat: "Examiner Standards",
+    },
+    {
+      title: "10-Year Question Bank Coverage",
+      description: "Thorough revision of every question type, numerical variant, and theorem tested in past board examinations.",
+      icon: BookOpen,
+      stat: "100% Syllabus",
+    },
+    {
+      title: "1-on-1 Daily Doubt Clinic",
+      description: "Akram Sir personally clears every single calculation hurdle and weak-area concept so no child falls behind.",
+      icon: ShieldCheck,
+      stat: "Zero Doubts Left",
+    },
   ];
 
   return (
@@ -35,7 +56,7 @@ export function ResultsSection({ testimonials }: ResultsSectionProps = {}) {
             Real Academic Growth
           </Badge>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            Proven Results &amp; Board Toppers
+            Proven Academic Results &amp; Board Focus
           </h2>
           <p className="text-slate-400 text-base sm:text-lg">
             Consistent 90%+ scores and remarkable score improvements in School and Board Examinations across Koradi and Nagpur.
@@ -47,7 +68,7 @@ export function ResultsSection({ testimonials }: ResultsSectionProps = {}) {
           {INSTITUTE_DETAILS.stats.map((stat) => (
             <div
               key={stat.label}
-              className="p-5 rounded-xl bg-slate-900 border border-slate-800 text-center hover:border-slate-700 transition-colors shadow-lg"
+              className="p-5 rounded-2xl bg-slate-900 border border-slate-800 text-center hover:border-slate-700 transition-colors shadow-lg"
             >
               <div className="text-3xl sm:text-4xl font-extrabold text-blue-400">
                 {stat.value}
@@ -59,73 +80,66 @@ export function ResultsSection({ testimonials }: ResultsSectionProps = {}) {
           ))}
         </div>
 
-        {/* Student Testimonials Grid with Real Photos & Avatars */}
+        {/* 4 Core Pillars of Academic Results */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {items.map((item, idx) => {
-            const avatarSrc = topperImages[idx % topperImages.length];
+          {academicPillars.map((pillar) => {
+            const Icon = pillar.icon;
             return (
               <Card
-                key={item.id || idx}
-                className="border-slate-800 bg-slate-900/90 hover:border-slate-700 transition-all duration-300 flex flex-col justify-between shadow-xl"
+                key={pillar.title}
+                className="border-slate-800 bg-slate-900/90 hover:border-slate-700 transition-all duration-300 shadow-xl p-6"
               >
-                <CardHeader className="pb-3">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-center gap-3.5">
-                      <Avatar className="h-12 w-12 border border-slate-700">
-                        <AvatarImage src={avatarSrc} alt={item.name} />
-                        <AvatarFallback>{item.name[0]}</AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <div className="flex items-center gap-1 text-amber-400 mb-0.5">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
-                          ))}
-                        </div>
-                        <CardTitle className="text-base sm:text-lg text-white font-bold">
-                          {item.name}
-                        </CardTitle>
-                        <div className="text-xs text-blue-400 font-medium">
-                          {item.grade} • {item.school}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Score Pill */}
-                    <div className="px-3 py-1 rounded-lg bg-blue-950 border border-blue-700 text-blue-300 font-black text-xs sm:text-sm shrink-0 shadow-sm">
-                      {item.score}
-                    </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
+                    <Icon className="w-6 h-6" />
                   </div>
-                </CardHeader>
-
-                <CardContent className="space-y-4">
-                  <div className="relative">
-                    <Quote className="w-6 h-6 text-slate-700/60 absolute -top-2 -left-1" />
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed italic pl-5">
-                      &ldquo;{item.quote}&rdquo;
+                  <div className="space-y-2 flex-1">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-white text-base sm:text-lg">
+                        {pillar.title}
+                      </h3>
+                      <span className="text-[11px] font-bold text-amber-300 bg-amber-950/80 border border-amber-600/30 px-2.5 py-0.5 rounded-full">
+                        {pillar.stat}
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                      {pillar.description}
                     </p>
                   </div>
-
-                  <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-xs text-slate-400">
-                    <span>Batch: {item.year}</span>
-                    <span className="text-emerald-400 flex items-center gap-1 font-medium">
-                      <CheckCircle className="w-3.5 h-3.5" />
-                      Verified Offline Student
-                    </span>
-                  </div>
-                </CardContent>
+                </div>
               </Card>
             );
           })}
         </div>
 
-        {/* View all testimonials CTA */}
-        <div className="text-center">
-          <Link href="/results">
-            <Button variant="outline" className="font-semibold text-sm">
-              <span>View Full Hall of Fame &amp; Student Scorecards</span>
-              <ArrowRight className="w-4 h-4 ml-1.5" />
-            </Button>
-          </Link>
+        {/* Authentic Center Verification Notice */}
+        <div className="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-1.5 text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-2 text-emerald-400 font-bold text-sm">
+              <CheckCircle2 className="w-4 h-4" />
+              <span>100% Genuine &amp; Verifiable Track Record</span>
+            </div>
+            <h4 className="text-base sm:text-lg font-bold text-white">
+              Want to see previous year marksheets and board answer copies?
+            </h4>
+            <p className="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
+              We respect our students&apos; privacy and do not display personal photos or phone numbers online. Authentic scorecards, board topper certificates, and parent contact references are available for review in person at our Koradi center.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <Link href="/results">
+              <Button variant="outline" className="text-xs sm:text-sm">
+                <span>View Results Methodology</span>
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button variant="default" className="text-xs sm:text-sm font-bold shadow-lg">
+                <span>Visit Center</span>
+              </Button>
+            </Link>
+          </div>
         </div>
 
       </div>

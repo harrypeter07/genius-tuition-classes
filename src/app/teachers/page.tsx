@@ -92,8 +92,8 @@ export default async function TeachersPage() {
               <div className="lg:col-span-5 relative">
                 <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-950">
                   <Image
-                    src="/images/akram-sir-teaching.jpg"
-                    alt="Akram Sir teaching class"
+                    src="/images/offline-classroom.jpg"
+                    alt="Akram's Genius Academy Classroom in Koradi"
                     fill
                     className="object-cover"
                   />

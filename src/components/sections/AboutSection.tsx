@@ -120,29 +120,29 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* 2-Column Real Photo Highlights */}
+            {/* 2-Column Real Study Materials Highlights (No People) */}
             <div className="grid grid-cols-2 gap-4">
               <div className="relative h-32 rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
                 <Image
-                  src="/images/doubt-session.jpg"
-                  alt="1-on-1 teacher doubt resolution"
+                  src="/images/math-notes.jpg"
+                  alt="Formula notes and handwritten math drills"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent flex items-end p-2.5">
-                  <span className="text-xs font-bold text-white">Individual Doubt Clearing</span>
+                  <span className="text-xs font-bold text-white">Handwritten Formula Sheets</span>
                 </div>
               </div>
 
               <div className="relative h-32 rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
                 <Image
-                  src="/images/students-learning.jpg"
-                  alt="Students focused on notes and study materials"
+                  src="/images/science-experiment.jpg"
+                  alt="Science conceptual study and experiments"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent flex items-end p-2.5">
-                  <span className="text-xs font-bold text-white">Focused Peer Study</span>
+                  <span className="text-xs font-bold text-white">Science Practical Concepts</span>
                 </div>
               </div>
             </div>

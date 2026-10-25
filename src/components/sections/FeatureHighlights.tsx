@@ -32,7 +32,7 @@ export function FeatureHighlights() {
   ];
 
   return (
-    <section className="relative z-20 -mt-4 sm:-mt-8 mb-8 sm:mb-16">
+    <section className="relative z-20 -mt-4 sm:-mt-8 lg:-mt-10 mb-8 sm:mb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Desktop View: Horizontal 4-Column Bar matching Mockup */}

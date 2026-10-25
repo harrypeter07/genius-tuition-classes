@@ -107,17 +107,15 @@ export function HeroSection() {
 
           </div>
 
-          {/* Mobile View: Synced desk image positioned between buttons and feature card */}
-          <div className="lg:hidden relative w-full h-[260px] sm:h-[340px] mt-2 mb-0">
+          {/* Dedicated Mobile View: Specifically cropped & centered study desk graphic */}
+          <div className="lg:hidden relative w-full aspect-[16/11] max-w-lg mx-auto mt-4 mb-0">
             <Image
-              src="/images/hero-study-desk.png"
-              alt="Study desk with books and Learn Grow Succeed"
+              src="/images/hero-study-desk-mobile.png"
+              alt="Akram's Genius Academy study desk with books and Learn Grow Succeed"
               fill
               priority
               className="object-contain object-bottom"
             />
-            {/* Top fade into #101e35 */}
-            <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#101e35] to-transparent pointer-events-none" />
           </div>
 
         </div>
